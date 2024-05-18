@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Reflection.Metadata;
+using System.Text;
+using System.Globalization;
 
 namespace ConsoleApp1
 {
@@ -14,7 +18,98 @@ namespace ConsoleApp1
                 Console.WriteLine("{0} : {1}",mess,i);
             }
         }
+
+        static double DoDivision(double x, double y)
+        {
+            if (y == 0)
+            {
+                // We are throwing an exception because
+                // you can't divide by zero
+                throw new System.DivideByZeroException();
+            }
+            return x / y;
+        }
+
+        private static void SayHello()
+        {
+            string name = "";
+            Console.Write("What is your name : ");
+            name = Console.ReadLine();
+            Console.WriteLine("Hello {0}", name);
+        }
+
+        static double GetSum(double x=1, double y = 1) 
+        {
+            double temp = x;
+            x = y;
+            y= temp;
+            return x + y;
+        }
+
+        // ----- OUT PARAMETER -----
+        // A parameter marked with out must be assigned a value in the method
+        static void DoubleIt(int x, out int solution)
+        {
+            solution = x * 2;
+        }
+
+        // ----- PASS BY REFERENCE -----
+       
+        public static void Swap(ref int num3, ref int num4)
+        {
+            int temp = num3;
+            num3 = num4;
+            num4 = temp;
+        }
+
+        // ----- PARAMS -----
+        // The params array must be the last parameter  in the list
+        static double GetSumMore(params double[] nums)
+        {
+            double sum = 0;
+            foreach (int i in nums)
+            {
+                sum += i;
+            }
+            return sum;
+        }
+
+        // ----- NAMED PARAMETERS -----
+        static void PrintInfo(string name, int zipCode)
+        {
+            Console.WriteLine("{0} lives in the zip code {1}", name, zipCode);
+        }
+
+        // ----- METHOD OVERLOADING -----
+        static double GetSum2(double x = 1, double y = 1)
+        {
+            return x + y;
+        }
+
+        static double GetSum2(string x = "1", string y = "1")
+        {
+            double dblX = Convert.ToDouble(x);
+            double dblY = Convert.ToDouble(y);
+            return dblX + dblY;
+        }
+
+        static void PaintCar(CarColor cc)
+        {
+            Console.WriteLine("The car was painted {0} with the code {1}",
+                cc, (int)cc);
+        }
+
+
         // ---- END OF FUNCTIONS --------
+
+        enum CarColor : byte
+        {
+            Orange = 1,
+            Blue,
+            Green,
+            Red,
+            Yellow
+        }
         static void Main(string[] args)
         {
             /*
@@ -226,7 +321,7 @@ namespace ConsoleApp1
 
 
 
-            // ------ ARRAYS ------
+            /*// ------ ARRAYS ------
             //Arrays are used to store multiple values in a single variable,
             //instead of declaring separate variables for each value.
 
@@ -272,10 +367,10 @@ namespace ConsoleApp1
             // ------for loop ----------
             Console.WriteLine("\nFor Loop\n");
 
-            for (int i = 0; i < randomArray.Length; i++)
+            for (int k = 0; k < randomArray.Length; k++)
             {
                
-                Console.WriteLine("Array {0} : Value : {1}" , i, randomArray[i]);
+                Console.WriteLine("Array {0} : Value : {1}" , k, randomArray[k]);
             }
 
             //------Multidimensional arrays----
@@ -287,11 +382,11 @@ namespace ConsoleApp1
             
             //using for loop 
 
-            for(int i = 0;i < custName.GetLength(0);i++)
+            for(int j = 0;j < custName.GetLength(0);j++)
             {
-                for(int j = 0;j < custName.GetLength(1);j++)
+                for(int k = 0;k < custName.GetLength(1);k++)
                 {
-                    Console.WriteLine("{0}",custName[i, j]);
+                    Console.WriteLine("{0}",custName[j, k]);
                 }
                 Console.WriteLine();
             }
@@ -340,50 +435,50 @@ namespace ConsoleApp1
             foreach (int m in anotherArray)
             {
                 Console.WriteLine("CopyTo : {0} ", m);
-            }
+            }*/
 
-            // ----- If - else   -----
-            
-
-            int age = 10;
-
-            if ((age >= 5) && (age <= 7))
-            {
-                Console.WriteLine("Go to elementary school");
-            }
-
-            else if ((age > 7) && (age < 13))
-            {
-                Console.WriteLine("Go to middle school");
-            }
-
-            else if ((age > 13) && (age < 19))
-            {
-                Console.WriteLine("Go to high school");
-            }
-
-            else
-            {
-                Console.WriteLine("Go to college");
-            }
-
-            if ((age < 14) || (age > 67))
-            {
-                Console.WriteLine("You shouldn't work");
-            }
-
-            Console.WriteLine("! true = " + (!true));
+            /* // ----- If - else   -----
 
 
+             int age = 10;
 
-           //terneary operator
-            bool canDrive = age >= 16 ? true : false;
+             if ((age >= 5) && (age <= 7))
+             {
+                 Console.WriteLine("Go to elementary school");
+             }
+
+             else if ((age > 7) && (age < 13))
+             {
+                 Console.WriteLine("Go to middle school");
+             }
+
+             else if ((age > 13) && (age < 19))
+             {
+                 Console.WriteLine("Go to high school");
+             }
+
+             else
+             {
+                 Console.WriteLine("Go to college");
+             }
+
+             if ((age < 14) || (age > 67))
+             {
+                 Console.WriteLine("You shouldn't work");
+             }
+
+             Console.WriteLine("! true = " + (!true));
 
 
 
+            //terneary operator
+             bool canDrive = age >= 16 ? true : false;*/
 
 
-            // -------- Switch -----------
+
+
+
+            /*// -------- Switch -----------
             
             switch (age)
             {
@@ -404,10 +499,10 @@ namespace ConsoleApp1
             }
 
         OtherSchool:
-            Console.WriteLine("Elementary, Middle, High School");
+            Console.WriteLine("Elementary, Middle, High School");*/
 
 
-            // ----- WHILE LOOP -----
+            /*// ----- WHILE LOOP -----
            
             int i = 1;
             while (i <= 10)
@@ -423,10 +518,11 @@ namespace ConsoleApp1
 
                 Console.WriteLine(i);
                 i++;
-            }
+            }*/
 
-            // ----- DO WHILE LOOP -----
-            // Use do while when you must execute the code at least once
+            /*// ----- DO WHILE LOOP -----
+            // Use do while when you must execute the code
+            // at least once
 
             // Generate a random number
             Random rnd = new Random();
@@ -447,8 +543,195 @@ namespace ConsoleApp1
 
             } while (secretNumber != numberGuessed);
 
-            Console.WriteLine("You guessed it is was {0}",
-                secretNumber);
+            Console.WriteLine("You guessed it is was {0}",secretNumber);*/
+
+
+            /*// ----- EXCEPTION HANDLING -----
+            // We use exception handling to catch errors
+            // that could crash our program
+            double num1 = 5;
+            double num2 = 0;
+
+            // Code that could cause an error is surrounded
+            // by a try block
+            try
+            {
+                Console.WriteLine("5 / 0 = {0}",
+                    DoDivision(num1, num2));
+            }
+
+            // We catch the error and warn the user
+            // rather then crash the program
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine("You can't Divide by Zero");
+
+                // Get additonal info on the exception
+                Console.WriteLine("Exception Type: " + ex.GetType().Name);
+                Console.WriteLine("Message: " + ex.Message);
+
+            }
+
+            // This is the default catch all for exceptions
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred");
+                Console.WriteLine("Exception Type: " + ex.GetType().Name);
+                Console.WriteLine("Message: " + ex.Message);
+            }
+
+            // finally always runs and provides for clean up
+            finally
+            {
+                Console.WriteLine("Cleaning Up");
+            }
+
+           // Try Block: Executes code that might throw an exception.
+
+           //Catch Blocks: Handle specific exceptions.
+                            //The first catch handles DivideByZeroException,
+                           //while the second is a general handler for any other exceptions.
+
+           //Finally Block: Executes cleanup code that runs whether or not an exception occurred.*/
+
+
+            /*// -----STRINGBUILDER---- -
+            // Each time you change a string you are actually
+            // creating a new string which is inefficient
+            // when you are working with large blocks of text
+            // StringBuilders actually change the text
+            // rather then make a copy
+
+            // Create a StringBuilder with a default size
+            // of 16 characters, but it grows automatically
+            StringBuilder sb = new StringBuilder("Random Text");
+
+            // Create a StringBuilder with a size of 256
+            StringBuilder sb2 = new StringBuilder("More Stuff that is very important", 256);
+
+            // Get max size
+           // Console.WriteLine("Capacity : {0}", sb2.Capacity);
+
+            // Get length
+            //Console.WriteLine("Length : {0}", sb2.Length);
+
+            // Add text to StringBuilder
+            sb2.AppendLine(" \nMore important text");
+
+            
+
+            // Define culture specific formating
+            CultureInfo enUS = CultureInfo.CreateSpecificCulture("en-US");
+
+            // Append a format string
+            string bestCust = "Bob Smith";
+            sb2.AppendFormat(enUS, "Best Customer : {0}", bestCust);
+
+            // Output StringBuilder
+            Console.WriteLine(sb2.ToString());
+            Console.WriteLine("-----------------------------");
+
+            // Replace a string
+            sb2.Replace("text", "characters");
+            Console.WriteLine(sb2.ToString());
+            //create variables with different data types in C#
+           //and convert them to strings using the ToString() method.
+
+            // Clear a string builder
+            sb2.Clear();
+
+            sb2.Append("Random Text");
+
+            // Are objects equal
+            Console.WriteLine(sb.Equals(sb2));
+
+            // Insert at an index
+            sb2.Insert(11, " that's Great");
+
+            Console.WriteLine("Insert : {0}", sb2.ToString());
+
+            // Remove number of characters starting at index
+            sb2.Remove(11, 7);
+
+            Console.WriteLine("Remove : {0}", sb2.ToString());*/
+
+            // ---------- FUNCTIONS / METHODS ----------
+            SayHello();
+
+            double x = 5;
+            double y = 4;
+            Console.WriteLine("5+4 ={0}",GetSum(x, y));
+            Console.WriteLine("x : {0}", x);
+
+           
+            int solution;
+            DoubleIt(15, out solution);
+
+            Console.WriteLine("15 * 2 = {0}",
+                solution);
+
+            // ----- PASS BY REFERENCE -----
+            int num3 = 10;
+            int num4 = 20;
+
+            Console.WriteLine("Before Swap num1 : {0} num2 : {1}", num3, num4);
+
+            Swap(ref num3, ref num4);
+
+            //Console.WriteLine("After Swap num1 : {0} num2 : {1}", num1, num2);
+
+        
+            Console.WriteLine("1 + 2 + 3 = {0}",
+                GetSumMore(1, 2, 3));
+
+            
+            // You can pass values in any order if you used named parameters
+            PrintInfo(zipCode: 15147,
+                name: "Derek Banas");
+
+            // ----- METHOD OVERLOADING -----
+            // You can define methods with the same
+            // name that will be called depending on
+            // what data is sent automatically
+            Console.WriteLine("5.0 + 4.0 = {0}",
+                GetSum2(5.0, 4.5));
+
+            Console.WriteLine("5 + 4 = {0}",
+                GetSum2(5, 4));
+
+            Console.WriteLine("5 + 4 = {0}",
+                GetSum2("5", "4"));
+
+
+            // ---------- DATETIME & TIMESPAN ----------
+
+            // Used to define dates
+            DateTime awesomeDate = new DateTime(1974, 12, 21);
+            Console.WriteLine("Day of Week : {0}", awesomeDate.DayOfWeek);
+
+            // You can change values
+            awesomeDate = awesomeDate.AddDays(4);
+            awesomeDate = awesomeDate.AddMonths(1);
+            awesomeDate = awesomeDate.AddYears(1);
+            Console.WriteLine("New Date : {0}", awesomeDate.Date);
+
+            // TimeSpan
+            // Used to define a time
+            TimeSpan lunchTime = new TimeSpan(12, 30, 0);
+
+            // Change values
+            lunchTime = lunchTime.Subtract(new TimeSpan(0, 15, 0));
+            lunchTime = lunchTime.Add(new TimeSpan(1, 0, 0));
+            Console.WriteLine("New Time : {0}", lunchTime.ToString());
+
+            // ----- ENUM -----
+            CarColor car1 = CarColor.Blue;
+            PaintCar(car1);
+
+            // Waits for input from the user if you run the
+            // ConsoleApp1.exe instead of instantly closing
+            // The executable is in bin/Debug/net6.0
+            Console.Read();
 
 
         }
