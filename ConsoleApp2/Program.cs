@@ -6,6 +6,7 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            //learning class
             Rectangle rect1;
             rect1.length = 200;
             rect1.width = 50;
