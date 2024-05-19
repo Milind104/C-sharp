@@ -42,4 +42,4 @@ namespace ConsoleApp2
             return numOfAnimals;
         }
     }
-}
+} 
