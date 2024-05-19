@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 // public, private, protected, constants,
-// read-only fields, constructors, setters, getters, 
-// properties and more on static
+// read-only fields, constructors, setters, getters, properties 
 
 namespace ConsoleApp3
 {

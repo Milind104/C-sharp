@@ -30,7 +30,7 @@ namespace ConsoleApp4
             whiskers.MakeSound();
             grover.MakeSound();
 
-            whiskers.SetAnimalIDInfo(12345, "Gaurang Patel");
+            whiskers.SetAnimalIDInfo(12345, "Gaurang Ganvit");
             grover.SetAnimalIDInfo(12346, "Shiv Patel");
 
             whiskers.GetAnimalIDInfo();
