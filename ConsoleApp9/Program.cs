@@ -5,6 +5,8 @@ using ConsoleApp9;
 
 namespace ConsoleApp9
 {
+   // Generic Collections, Generic Methods,
+// Generic Structs, and more on Delegates
     class Program
     {
         static void Main(string[] args)
@@ -85,6 +87,7 @@ namespace ConsoleApp9
             }
         }
 
+        
         public delegate void Arithmetic(double num1, double num2);
 
         public static void Add(double num1, double num2)

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp8
 {
+    //collections
     class Program
     {
         static void Main(string[] args)
