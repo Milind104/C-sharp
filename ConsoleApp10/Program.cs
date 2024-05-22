@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 namespace ConsoleApp10
 {
-    //Implement LINQ operations and list manipulations with examples
+    
 
     class Program 
     {
