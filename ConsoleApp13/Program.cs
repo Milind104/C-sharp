@@ -24,7 +24,7 @@ namespace ConsoleApp13
         }
         static void Main(string[] args)
         {
-            /*//simple Thread example
+            /*//simple Thread 
             Thread t = new Thread(Print1);
             t.Start();
 
