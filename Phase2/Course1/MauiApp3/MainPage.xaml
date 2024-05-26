@@ -15,6 +15,29 @@
             <Button x:Name="SLayoutBtn" Text="StackLayout"
                     SemanticProperties.Hint="Opens StackLayout"
                     Clicked="SLayoutBtn_Clicked" HorizontalOptions="Center"/>
+
+            <Button x:Name="HSLayoutBtn" Text="HorizontalStackLayout"
+                    SemanticProperties.Hint="Opens HorizontalStackLayout"
+                    Clicked="SLayoutBtn_Clicked_1" HorizontalOptions="Center"/>
+
+            <Button x:Name="GridBtn" Text="GridLayout" 
+                    SemanticProperties.Hint="Opens GridLayout"
+                    Clicked="GridBtn_Clicked" HorizontalOptions="Center"/>
+
+            <Button x:Name="CalcBtn" Text="CalcGridLayout" 
+                    SemanticProperties.Hint="Opens CalcGridLayout"
+                    Clicked="CalcBtn_Clicked" HorizontalOptions="Center"/>
+
+            <Button x:Name="FlexBtn" Text="FlexLayout" 
+                    SemanticProperties.Hint="Opens FlexLayout"
+                    Clicked="FlexBtn_Clicked" HorizontalOptions="Center"/>
+
+            <Button x:Name="AbsoluteBtn" Text="AbsoluteLayout" 
+                    SemanticProperties.Hint="Opens AbsoluteLayout"
+                    Clicked="AbsoluteBtn_Clicked" HorizontalOptions="Center"/>
+
+
+
         </VerticalStackLayout>
     </ScrollView>
 

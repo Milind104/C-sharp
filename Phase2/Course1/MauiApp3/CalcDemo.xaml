@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.CalcDemo"
+             Title="CalcDemo"
+             Background="#512BD4">
+    <Grid Padding="16" RowSpacing="2" ColumnSpacing="2"
+          RowDefinitions="*, *, *, *, *, *" ColumnDefinitions="*,*,*,*">
+        <Entry x:Name="entry" Placeholder="0" HorizontalTextAlignment="End"
+               FontSize="22" MaxLength="10" IsReadOnly="True" Grid.Row="0"
+               Grid.Column="0" Grid.ColumnSpan="4"/>
+
+        <Button Text="x/-" Grid.Row="1" Grid.Column="0" FontSize="22" 
+                Clicked="SignChangeClicked" />
+        <Button Text="." Grid.Row="1" Grid.Column="1" FontSize="22" 
+                Clicked="DecimalClicked" />
+        <Button Text="=" Grid.Row="1" Grid.Column="2" FontSize="22" 
+                Clicked="EqualClicked" />
+        <Button Text="=" Grid.Row="1" Grid.Column="3" FontSize="22" 
+                Clicked="OnOperatorClicked" />
+
+        <Button Text="7" Grid.Row="2" Grid.Column="0" FontSize="22" 
+                Clicked="NumberClicked" />
+        <Button Text="8" Grid.Row="2" Grid.Column="1" FontSize="22" 
+                Clicked="NumberClicked" />
+        <Button Text="9" Grid.Row="2" Grid.Column="2" FontSize="22" 
+                Clicked="NumberClicked" />
+        <Button Text="*" Grid.Row="2" Grid.Column="3" FontSize="22" 
+                Clicked="OnOperatorClicked" />
+    </Grid>
+</ContentPage>

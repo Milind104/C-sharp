@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp3.GridDemo"
+             Title="GridDemo">
+    <Grid RowSpacing="6" ColumnSpacing="6" RowDefinitions="*, *, *" ColumnDefinitions="*,*,*">
+
+        <BoxView Color="Green"/>
+        <Label 
+            Text="Row 0, Column 0"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <BoxView Grid.Column="1" Color="Blue"/>
+        <Label Grid.Column="1"
+            Text="Row 0, Column 1"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <BoxView Grid.Row="1" Color="Teal"/>
+        <Label Grid.Row="1"
+            Text="Row 1, Column 0"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                 Color="Purple"/>
+        <Label Grid.Row="1"  Grid.Column="1"
+            Text="Row 1, Column 1"
+            Grid.ColumnSpan="2"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <BoxView Grid.Row="2" Grid.ColumnSpan="2" Color="Red"/>
+        <Label Grid.Row="2" Grid.ColumnSpan="2"
+            Text="Row 2, Columns 0 and 1"
+            TextColor="White"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </Grid>
+</ContentPage>
