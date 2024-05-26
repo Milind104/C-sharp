@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="MauiApp4.ControlDemo"
+             Title="ControlDemo">
+
+    <ScrollView>
+        <VerticalStackLayout Margin="20" Spacing="10">
+            <ImageButton x:Name="imgBtn" Source="dotnet_bot.png"
+                     Clicked="imgBtn_Clicked"/>
+
+            <Button x:Name="btn" Text="Alert" Clicked="btn_Clicked"
+                    HorizontalOptions="Center"/>
+
+            <Label x:Name="infoLabel"/>
+
+            <SearchBar x:Name="searchBar" 
+                       SearchButtonPressed="searchBar_SearchButtonPressed"/>
+
+            <RadioButton CheckedChanged="RadioButton_CheckedChanged"
+                         Content="Man" GroupName="sexGrp"
+                         Value="Man"/>
+            <RadioButton CheckedChanged="RadioButton_CheckedChanged"
+                         Content="Woman" GroupName="sexGrp"
+                         Value="Woman"/>
+
+            <HorizontalStackLayout>
+                <CheckBox IsChecked="True" Color="Blue"
+                          VerticalOptions="Center"
+                          CheckedChanged="CheckBox_CheckedChanged"/>
+                <Label Text="Do you like this tutorial"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Switch IsToggled="True" OnColor="Blue"
+                        ThumbColor="Purple"
+                        VerticalOptions="Center"
+                        Toggled="Switch_Toggled"/>
+                <Label Text="You love this tutorial"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <SwipeView>
+    
+                <SwipeView.LeftItems>
+                    <SwipeItem Text="Favorite"
+                               IconImageSource="favorite.svg"
+                               BackgroundColor="LightGreen"
+                               Invoked="SwipeItem_Invoked"/>
+                    <SwipeItem Text="Delete"
+                               IconImageSource="delete.svg"
+                               BackgroundColor="LightPink"
+                               Invoked="SwipeItem_Invoked_1"/>
+                </SwipeView.LeftItems>
+                <Grid HeightRequest="60"
+                      WidthRequest="300"
+                      BackgroundColor="White">
+                    <Image Source="cat.png" HorizontalOptions="Start"/>
+                </Grid>
+            </SwipeView>
+
+            <Slider x:Name="slider" Minimum="0" Maximum="50"
+                    MinimumTrackColor="Cyan" MaximumTrackColor="Blue"
+                    ThumbColor="Purple" ValueChanged="slider_ValueChanged"/>
+            <Label x:Name="sliderLabel"/>
+
+            <Stepper x:Name="stepper" ValueChanged="stepper_ValueChanged"
+                     Maximum="50" Minimum="0" Increment="1"/>
+            <Label x:Name="stepperLabel"/>
+
+            <DatePicker MinimumDate="12/21/1974"
+                        MaximumDate="{x:Static sys:DateTime.Now}"
+                        Date="{x:Static sys:DateTime.Now}"/>
+
+            <TimePicker Time="12:00:00" />
+
+            <Entry x:Name="entry"
+                   Placeholder="Enter Name"
+                   ClearButtonVisibility="WhileEditing"
+                   IsSpellCheckEnabled="true"
+                   IsTextPredictionEnabled="true"
+                   Completed="entry_Completed"/>
+
+            <Editor AutoSize="TextChanges" Placeholder="Just some random words">
+            </Editor>
+
+            <ListView x:Name="Steelers" ItemsSource="{Binding MyPlayers}"
+                      RowHeight="100"
+                      ItemSelected="Steelers_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Name}"
+                                   ImageSource="{Binding Image}">
+                            <ImageCell.ContextActions>
+                                <MenuItem Text="Delete" IsDestructive="True"
+                                          Command="{Binding Path=BindingContext.DeletePlayer,
+                                    Source={Reference Steelers}}"
+                                          CommandParameter="{Binding .}"/>
+                            </ImageCell.ContextActions>
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <CarouselView ItemsSource="{Binding MyPlayers}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame CornerRadius="5" Margin="5"
+                                   HeightRequest="250"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   HasShadow="True">
+                                <StackLayout>
+
+                                    <Label Text="{Binding Name}"
+                                       FontFamily="Anton-Regular.ttf"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                                    <Image Source="{Binding Image}"
+                                       Aspect="Fill"
+                                       HeightRequest="150"
+                                       WidthRequest="150"
+                                       HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <StackLayout>
+                <Label FontFamily="Icons" Text="&#xE800;" FontSize="Large"/>
+            </StackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
