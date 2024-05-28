@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp6.MVVM.Views.CustomersView"
+             Title="CustomersView">
+    <VerticalStackLayout>
+        <CollectionView SelectionMode="Single" 
+                        ItemsSource="{Binding Customers}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame CornerRadius="5" Margin="5"
+                               HeightRequest="60" 
+                               HorizontalOptions="Start"
+                               VerticalOptions="CenterAndExpand"
+                               HasShadow="True">
+                            <StackLayout>
+                                <Label Text="{Binding Name}"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

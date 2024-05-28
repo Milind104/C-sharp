@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp6.MVVM.Views.CalcView"
+             Title="CalcView">
+    <VerticalStackLayout Margin="20" Spacing="20">
+        <Entry Placeholder="Number 1" Text="{Binding Num1}"/>
+        <Entry Placeholder="Number 2" Text="{Binding Num2}"/>
+        <Entry Placeholder="Answer" Text="{Binding Answer}"/>
+        <Button
+            Command="{Binding SumCommand}"
+            HorizontalOptions="Center"
+            Text="Sum"/>
+    </VerticalStackLayout>
+</ContentPage>
