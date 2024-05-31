@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34916.146
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiApp3", "MauiApp3.csproj", "{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950EC521-E4FE-4A37-8C50-78FD3CA54D1B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA147579-53E7-4CDD-BB61-A8D0E9C7C6DB}
+	EndGlobalSection
+EndGlobal

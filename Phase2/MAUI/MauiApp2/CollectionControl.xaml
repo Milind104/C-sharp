@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.CollectionControl"
+             Title="CollectionControl">
+    <StackLayout>
+        <CarouselView IndicatorView="indicatoe1">
+            <CarouselView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Android</x:String>
+                    <x:String>Windows</x:String>
+                    <x:String>Mac</x:String>
+                    <x:String>Unix</x:String>
+                </x:Array>
+            </CarouselView.ItemsSource>
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame Margin="10"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               HeightRequest="200"
+                               HasShadow="True"
+                               CornerRadius="14"
+                               BorderColor="BlueViolet">
+                            <Label Text="{Binding .}"/>
+                        </Frame>
+                        
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="Indicator1"
+                       HorizontalOptions="Center"
+                       IndicatorColor="Green"
+                       SelectedIndicatorColor="BlueViolet"/>
+
+
+    </StackLayout>
+</ContentPage>
