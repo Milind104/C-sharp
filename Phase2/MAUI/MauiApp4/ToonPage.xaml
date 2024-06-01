@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp4.ToonPage"
+             Title="ToonPage">
+    <CollectionView x:Name="cvToons" ItemsLayout="VerticalGrid, 2">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid Padding="10" RowDefinitions="60" ColumnDefinitions="70,*">
+                    <Image Grid.RowSpan="2" 
+        Source="{Binding PictureUrl}" 
+        Aspect="AspectFit"
+        HeightRequest="60" 
+        WidthRequest="60">
+                        <Image.Clip>
+                            <RectangleGeometry Rect="0,0,160,160"/>
+                        </Image.Clip>
+                    </Image>
+
+                    <Label Grid.Column="1" 
+        Text="{Binding FullName}" 
+        FontAttributes="Bold"
+        TextColor="Black"
+        VerticalOptions="Start"
+        LineBreakMode="TailTruncation" />
+
+                    <Label Grid.Column="1" 
+        Text="{Binding Occupation}"
+        LineBreakMode="TailTruncation"
+        FontAttributes="Italic" 
+        TextColor="Black"
+        VerticalOptions="End" />
+
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
