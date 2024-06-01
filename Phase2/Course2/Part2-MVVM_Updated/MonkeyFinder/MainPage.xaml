@@ -6,14 +6,15 @@
              xmlns:viewmodel="clr-namespace:MonkeyFinder.ViewModel"
              x:DataType="viewmodel:MonkeysViewModel"
              Title="{Binding Title}">
+
     <Grid
-        ColumnDefinitions="* ,*"
+        ColumnDefinitions="*,*"
         ColumnSpacing="5"
-        RowDefinitions="* ,Auto"
+        RowDefinitions="*,Auto"
         RowSpacing="0">
         <CollectionView ItemsSource="{Binding Monkeys}"
-                        SelectionMode="None"
-                        Grid.ColumnSpan="2">
+                         SelectionMode="None"
+                         Grid.ColumnSpan="2">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Monkey">
                     <Grid Padding="10">
@@ -34,7 +35,6 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-
         </CollectionView>
 
         <Button Text="Get Monkeys" 
@@ -45,13 +45,19 @@
                 Style="{StaticResource ButtonOutline}"
                 Margin="8"/>
 
+        
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
-                           HorizontalOptions="Fill"
-                           VerticalOptions="Center"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand"
 			   Color="{StaticResource Primary}"
                            Grid.RowSpan="2"
                            Grid.ColumnSpan="2"/>
-        
     </Grid>
+
+
+
+
+
+
 </ContentPage>

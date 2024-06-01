@@ -22,29 +22,27 @@ namespace MonkeyFinder.ViewModel
                     return;
                 isBusy = value;
                 OnPropertyChanged();
-
                 OnPropertyChanged(nameof(IsNotBusy));
-                
+            }
+        }
+
+        public string Title
+        {
+            get => title;
+            set
+            {
+                if (title == value)
+                    return;
+                title = value;
+                OnPropertyChanged();
             }
         }
 
         public bool IsNotBusy => !IsBusy;
 
-        public string Title
-        {
-            get => Title;
-            set
-            {
-                if (Title == value)
-                    return;
-                Title = value;
-                OnPropertyChanged();
-
-            }
-        }
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public void OnPropertyChanged([CallerMemberName] string name = null )=> PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        public void OnPropertyChanged([CallerMemberName] string name = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }
