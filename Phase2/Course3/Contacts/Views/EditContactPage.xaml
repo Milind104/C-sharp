@@ -4,7 +4,8 @@
              x:Class="Contacts.Views.EditContactPage"
              Title="EditContactPage">
     <VerticalStackLayout>
-        <Label 
+        <Label
+            x:Name="lblName"
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
