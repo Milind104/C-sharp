@@ -20,5 +20,18 @@ namespace WeatherApp.MVVM.Models
 
         [JsonProperty("icon")]
         public string Icon { get; set; }
+        public string ImageUrl => string.Format("w_{0}.png", Icon);
+
+        public void DebugImageUrl()
+        {
+            Console.WriteLine(ImageUrl);
+        }
+
+
+
+
+
+
     }
 }
+

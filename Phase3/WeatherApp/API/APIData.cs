@@ -12,7 +12,7 @@ namespace WeatherApp.API
     {
         
 
-        public static async Task<Root> GetWeatherData( string latitude, string longitude)
+        public static async Task<Root> GetWeatherData( double latitude, double longitude)
         {
             HttpClient client = new HttpClient();
 

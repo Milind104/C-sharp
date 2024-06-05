@@ -1,4 +1,4 @@
-﻿using Microsoft.WindowsAppSDK.Runtime.Packages;
+﻿//using Microsoft.WindowsAppSDK.Runtime.Packages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,8 @@ namespace WeatherApp.MVVM.Models
     {
         [JsonProperty("dt")]
         public int Dt { get; set; }
+
+        public string CurrentData => UtcTimeLibrary.UtcTimeStamp.ConvertToUtc(Dt);
 
         [JsonProperty("main")]
         public Main Main { get; set; }
