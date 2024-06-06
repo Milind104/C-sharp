@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿
+using Newtonsoft.Json;
+using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherApp.MVVM.Models;
 
@@ -10,16 +8,22 @@ namespace WeatherApp.API
 {
     public static class APIData
     {
-        
+        private const string ApiKey = "285c351950be99a30e0dc1efd8873afc"; // Replace with your actual API key
+        private static readonly HttpClient HttpClient = new HttpClient();
 
-        public static async Task<Root> GetWeatherData( double latitude, double longitude)
+        public static async Task<Root> GetWeatherData(double latitude, double longitude)
         {
-            HttpClient client = new HttpClient();
+            string url = $"https://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={ApiKey}";
+            var response = await HttpClient.GetStringAsync(url);
+            var result = JsonConvert.DeserializeObject<Root>(response);
+            return result;
+        }
 
-           var response= await client.GetStringAsync(string.Format("https://api.openweathermap.org/data/2.5/forecast?lat={0}&lon={1}&appid=285c351950be99a30e0dc1efd8873afc",latitude,longitude));
-           
-            var result=JsonConvert.DeserializeObject<Root>(response);
-
+        public static async Task<Root> GetWeatherDataByCity(string city)
+        {
+            string url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={ApiKey}";
+            var response = await HttpClient.GetStringAsync(url);
+            var result = JsonConvert.DeserializeObject<Root>(response);
             return result;
         }
     }
