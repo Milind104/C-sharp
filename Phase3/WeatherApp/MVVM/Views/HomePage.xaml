@@ -7,77 +7,84 @@
     <ContentPage.BindingContext>
         <vm:HomePageViewModel />
     </ContentPage.BindingContext>
-
     <ScrollView>
-        <Grid RowDefinitions="auto,auto,auto,*,auto" Padding="20" BackgroundColor="DarkSlateBlue">
-            <!-- City and Weather Info -->
-            <StackLayout Grid.Row="0" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="{Binding CityName}" FontSize="24" FontAttributes="Bold" TextColor="#333"/>
-                <Label Text="{Binding WeatherInfo}" FontSize="18" TextColor="#666"/>
-            </StackLayout>
+        <Frame BorderColor="Black" CornerRadius="10" HasShadow="True" Padding="10" Margin="10">
+            <Grid VerticalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,*,auto,auto" Padding="10" BackgroundColor="#1E1E2C">
 
-            <!-- Weather Image -->
-            <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
-                <Image Source="{Binding CloudImage}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill"/>
-            </StackLayout>
-
-            <!-- Weather Details -->
-            <StackLayout Grid.Row="2" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-                <!-- Temperature -->
-                <StackLayout Spacing="5" Orientation="Horizontal">
-                    <Image Source="temperature.png" HeightRequest="24" WidthRequest="24"/>
-                    <StackLayout Orientation="Vertical" Spacing="2">
-                        <Label Text="Temperature" FontAttributes="Bold" TextColor="#333"/>
-                        <Label Text="{Binding Temp}" FontSize="20" TextColor="#111"/>
-                    </StackLayout>
+                <!-- City and Weather Info -->
+                <StackLayout Grid.Row="0" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="{Binding CityName}" FontSize="28" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="{Binding WeatherInfo}" FontSize="20" TextColor="LightGray"/>
                 </StackLayout>
 
-                <!-- Wind Speed -->
-                <StackLayout Spacing="5" Orientation="Horizontal">
-                    <Image Source="wind1.png" HeightRequest="24" WidthRequest="24"/>
-                    <StackLayout Orientation="Vertical" Spacing="2">
-                        <Label Text="Wind Speed" FontAttributes="Bold" TextColor="#333"/>
-                        <Label Text="{Binding Speed}" FontSize="20" TextColor="#111"/>
-                    </StackLayout>
+                <!-- Weather Image -->
+                <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+                    <Image Source="{Binding CloudImage}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill"/>
                 </StackLayout>
 
-                <!-- Humidity -->
-                <StackLayout Spacing="5" Orientation="Horizontal">
-                    <Image Source="humidity.png" HeightRequest="24" WidthRequest="24"/>
-                    <StackLayout Orientation="Vertical" Spacing="2">
-                        <Label Text="Humidity" FontAttributes="Bold" TextColor="#333"/>
-                        <Label Text="{Binding Humidity}" FontSize="20" TextColor="#111"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
+                <!-- Weather Details -->
+                <Frame Grid.Row="2" BorderColor="#00BCD4" BackgroundColor="#00BCD4" CornerRadius="10" HasShadow="True" Margin="10">
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-            <!-- Hourly Forecast -->
-            
-            <CollectionView ItemsSource="{Binding ListDatas}" Grid.Row="3" Margin="10" HorizontalOptions="FillAndExpand">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Horizontal"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        
-                        <Frame CornerRadius="15" Padding="10" Margin="5" BackgroundColor="LightGray" HasShadow="True" >
-                            
-                            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                                <Label Text="abc"/>
-                                <Image HeightRequest="50" WidthRequest="50" Source="{Binding Weather[0].ImageUrl}"/>
-                                <Label Text="{Binding Main.Temp}" FontSize="18" TextColor="#111" HorizontalOptions="Center"/>
-                                <Label Text="{Binding CurrentData}" FontSize="12" TextColor="#666" HorizontalOptions="Center"/>
+                        <!-- Temperature -->
+                        <StackLayout Spacing="5" Orientation="Horizontal" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="temperature.png" HeightRequest="24" WidthRequest="24"/>
+                            <StackLayout Orientation="Vertical" Spacing="2">
+                                <Label Text="Temperature" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="{Binding Temp}" FontSize="20" TextColor="White"/>
                             </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        </StackLayout>
 
-            <!-- Buttons -->
-            <StackLayout Grid.Row="4" Spacing="15" Orientation="Horizontal" HorizontalOptions="Center">
-                <Button Text="Get Location" Command="{Binding GetLocationCommand}" BackgroundColor="Gray" TextColor="White" CornerRadius="20" WidthRequest="150"/>
-                <Button Text="Get Weather By City" Command="{Binding GetWeatherByCityCommand}" BackgroundColor="Gray" TextColor="White" CornerRadius="20" WidthRequest="150"/>
-            </StackLayout>
-        </Grid>
+                        <!-- Wind Speed -->
+                        <StackLayout Spacing="5" Orientation="Horizontal" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="wind1.png" HeightRequest="24" WidthRequest="24"/>
+                            <StackLayout Orientation="Vertical" Spacing="2">
+                                <Label Text="Wind Speed" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="{Binding Speed}" FontSize="20" TextColor="White"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- Humidity -->
+                        <StackLayout Spacing="5" Orientation="Horizontal" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Source="humidity.png" HeightRequest="24" WidthRequest="24"/>
+                            <StackLayout Orientation="Vertical" Spacing="2">
+                                <Label Text="Humidity" FontAttributes="Bold" TextColor="White"/>
+                                <Label Text="{Binding Humidity}" FontSize="20" TextColor="White"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- Hourly Forecast -->
+                <CollectionView ItemsSource="{Binding ListDatas}" Grid.Row="3" Margin="10" HorizontalOptions="FillAndExpand">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10" Padding="10" Margin="5" BackgroundColor="#2C2C3A" HasShadow="True">
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    <Label Text="abc" TextColor="White"/>
+                                    <Image HeightRequest="50" WidthRequest="50" Source="{Binding Weather[0].ImageUrl}"/>
+                                    <Label Text="{Binding Main.Temp}" FontSize="18" TextColor="White" HorizontalOptions="Center"/>
+                                    <Label Text="{Binding CurrentData}" FontSize="12" TextColor="LightGray" HorizontalOptions="Center"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Buttons -->
+                <StackLayout Grid.Row="4" Spacing="15" Orientation="Horizontal" HorizontalOptions="Center" Margin="20">
+                    <Button Text="Get Location" Command="{Binding GetLocationCommand}" BackgroundColor="#FF4081" TextColor="White" CornerRadius="20" WidthRequest="120" HeightRequest="40"/>
+                    <Button Text="Get Weather By City" Command="{Binding GetWeatherByCityCommand}" BackgroundColor="#FF4081" TextColor="White" CornerRadius="20" WidthRequest="120" HeightRequest="40"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
     </ScrollView>
 </ContentPage>
