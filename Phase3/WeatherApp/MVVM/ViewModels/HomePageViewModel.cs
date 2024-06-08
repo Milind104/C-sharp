@@ -24,10 +24,15 @@ namespace WeatherApp.MVVM.ViewModels
         private string temp;
 
         [ObservableProperty]
+        private string temp_min;
+
+        [ObservableProperty]
         private string speed;
 
         [ObservableProperty]
         private string humidity;
+
+
 
         private double latitude;
         private double longitude;
@@ -108,6 +113,7 @@ namespace WeatherApp.MVVM.ViewModels
             Humidity = $"{root.List[0].Main.Humidity}%";
             Temp = $"{root.List[0].Main.Temp}°F";
             Speed = $"{root.List[0].Wind.Speed} km/h";
+            Temp_min = $"{root.List[0].Main.TempMin}";
         }
     }
 }

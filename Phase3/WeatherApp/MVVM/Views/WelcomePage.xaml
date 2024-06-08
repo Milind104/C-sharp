@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MVVM.Views.WelcomePage"
+             Title="WelcomePage">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush x:Key="FrameBackgroundBrush" EndPoint="0,1">
+                <GradientStop Offset="0" Color="#232A51" />
+                <GradientStop Offset="0.5" Color="#5740A2" />
+                <GradientStop Offset="1" Color="#7C45A0" />
+            </LinearGradientBrush>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="50, Auto, Auto, *, Auto, Auto, 34, Auto, 50" Background="{StaticResource FrameBackgroundBrush}"> 
+        
+        
+        <Label Grid.Row="1"
+               Text="Discover The"
+               FontSize="28"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+
+        <Label Grid.Row="2"
+               Text="Weather In Your City"
+               FontSize="28"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+
+        <Image
+            Grid.Row="3"
+            Margin="20,0"
+            Source="w_01d.png" />
+
+        <Label Grid.Row="4"
+               Text="Get to know your weather maps and"
+               FontSize="16"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+
+        <Label Grid.Row="5"
+               Text="radar precipitation forcast"
+               FontSize="16"
+               TextColor="White"
+               HorizontalTextAlignment="Center"/>
+
+        <Button x:Name="getStarted"
+                Grid.Row="7"
+                BackgroundColor="#DDB130"
+                CornerRadius="16"
+                FontSize="18"
+                HeightRequest="50"
+                TextColor="Black"
+                WidthRequest="255"
+                Clicked="getStarted_Clicked" 
+                Text="GET STARTED"/>
+    </Grid>
+    
+</ContentPage>
+    

@@ -8,9 +8,7 @@ namespace WeatherApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new HomePage()) {
-                BarBackgroundColor = Colors.Black
-            };
+            MainPage = new AppShell();
         }
     }
 }
