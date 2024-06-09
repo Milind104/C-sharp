@@ -6,6 +6,7 @@ using WeatherApp.API;
 using WeatherApp.MVVM.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WeatherApp.MVVM.Views;
 
 namespace WeatherApp.MVVM.ViewModels
 {
@@ -23,8 +24,7 @@ namespace WeatherApp.MVVM.ViewModels
         [ObservableProperty]
         private string temp;
 
-        [ObservableProperty]
-        private string temp_min;
+        
 
         [ObservableProperty]
         private string speed;
@@ -113,7 +113,15 @@ namespace WeatherApp.MVVM.ViewModels
             Humidity = $"{root.List[0].Main.Humidity}%";
             Temp = $"{root.List[0].Main.Temp}°F";
             Speed = $"{root.List[0].Wind.Speed} km/h";
-            Temp_min = $"{root.List[0].Main.TempMin}";
+           
         }
+        [RelayCommand]
+        private async Task NavigateToSevenDayWeather()
+        {
+            await Shell.Current.GoToAsync(nameof(SevenDayWeatherPage));
+        }
+
+
+
     }
 }

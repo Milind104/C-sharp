@@ -15,6 +15,9 @@ namespace WeatherApp.MVVM.Models
 
         public string CurrentData => UtcTimeLibrary.UtcTimeStamp.ConvertToUtc(Dt);
 
+
+        
+
         [JsonProperty("main")]
         public Main Main { get; set; }
 

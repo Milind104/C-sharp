@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WeatherApp.MVVM.Views.WelcomePage"
-             Title="WelcomePage">
+<ContentPage
+    x:Class="WeatherApp.MVVM.Views.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Weather"
+    Background="#232A51"
+    IconImageSource="logo.png">
 
 
     <ContentPage.Resources>
@@ -14,49 +17,53 @@
             </LinearGradientBrush>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid RowDefinitions="50, Auto, Auto, *, Auto, Auto, 34, Auto, 50" Background="{StaticResource FrameBackgroundBrush}"> 
-        
-        
-        <Label Grid.Row="1"
-               Text="Discover The"
-               FontSize="28"
-               TextColor="White"
-               HorizontalTextAlignment="Center"/>
+    <Grid Background="{StaticResource FrameBackgroundBrush}" RowDefinitions="50, Auto, Auto, *, Auto, Auto, 34, Auto, 50">
 
-        <Label Grid.Row="2"
-               Text="Weather In Your City"
-               FontSize="28"
-               TextColor="White"
-               HorizontalTextAlignment="Center"/>
+
+        <Label
+            Grid.Row="1"
+            FontSize="28"
+            HorizontalTextAlignment="Center"
+            Text="Discover The"
+            TextColor="White" />
+
+        <Label
+            Grid.Row="2"
+            FontSize="28"
+            HorizontalTextAlignment="Center"
+            Text="Weather In Your City"
+            TextColor="White" />
 
         <Image
             Grid.Row="3"
             Margin="20,0"
             Source="w_01d.png" />
 
-        <Label Grid.Row="4"
-               Text="Get to know your weather maps and"
-               FontSize="16"
-               TextColor="White"
-               HorizontalTextAlignment="Center"/>
+        <Label
+            Grid.Row="4"
+            FontSize="16"
+            HorizontalTextAlignment="Center"
+            Text="Get to know your weather maps and"
+            TextColor="White" />
 
-        <Label Grid.Row="5"
-               Text="radar precipitation forcast"
-               FontSize="16"
-               TextColor="White"
-               HorizontalTextAlignment="Center"/>
+        <Label
+            Grid.Row="5"
+            FontSize="16"
+            HorizontalTextAlignment="Center"
+            Text="radar precipitation forcast"
+            TextColor="White" />
 
-        <Button x:Name="getStarted"
-                Grid.Row="7"
-                BackgroundColor="#DDB130"
-                CornerRadius="16"
-                FontSize="18"
-                HeightRequest="50"
-                TextColor="Black"
-                WidthRequest="255"
-                Clicked="getStarted_Clicked" 
-                Text="GET STARTED"/>
+        <Button
+            x:Name="getStarted"
+            Grid.Row="7"
+            BackgroundColor="#DDB130"
+            Clicked="getStarted_Clicked"
+            CornerRadius="16"
+            FontSize="18"
+            HeightRequest="50"
+            Text="GET STARTED"
+            TextColor="Black"
+            WidthRequest="255" />
     </Grid>
-    
+
 </ContentPage>
-    

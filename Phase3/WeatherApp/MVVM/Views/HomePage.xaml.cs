@@ -9,5 +9,7 @@ namespace WeatherApp.MVVM.Views
             InitializeComponent();
             BindingContext = new HomePageViewModel();
         }
+
+        
     }
 }

@@ -13,7 +13,7 @@ namespace WeatherApp.API
 
         public static async Task<Root> GetWeatherData(double latitude, double longitude)
         {
-            string url = $"https://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={ApiKey}";
+            string url = $"https://api.openweathermap.org/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={ApiKey} ";
             var response = await HttpClient.GetStringAsync(url);
             var result = JsonConvert.DeserializeObject<Root>(response);
             return result;
@@ -21,10 +21,15 @@ namespace WeatherApp.API
 
         public static async Task<Root> GetWeatherDataByCity(string city)
         {
-            string url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={ApiKey}";
+            string url = $"https://api.openweathermap.org/data/2.5/forecast?q={city}&appid={ApiKey} ";
             var response = await HttpClient.GetStringAsync(url);
             var result = JsonConvert.DeserializeObject<Root>(response);
             return result;
         }
+
+        
+
+
+
     }
 }

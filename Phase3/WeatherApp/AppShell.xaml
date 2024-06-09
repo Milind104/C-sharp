@@ -5,12 +5,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:WeatherApp"
     xmlns:view="clr-namespace:WeatherApp.MVVM.Views"
-    Shell.FlyoutBehavior="Flyout"
-    Title="WeatherApp">
+    Title="WeatherApp"
+    Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Weather"
         ContentTemplate="{DataTemplate view:WelcomePage}"
         Route="WelcomePage" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate view:HomePage}"
+        Route="HomePage" />
+
+    <ShellContent ContentTemplate="{DataTemplate view:SevenDayWeatherPage}" Route="SevenDayWeatherPage" />
 
 </Shell>

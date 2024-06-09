@@ -10,6 +10,9 @@ namespace WeatherApp
 
             Routing.RegisterRoute(nameof(WelcomePage),typeof(WelcomePage));
             Routing.RegisterRoute(nameof(HomePage),typeof(HomePage));
+            Routing.RegisterRoute(nameof(SevenDayWeatherPage),typeof(SevenDayWeatherPage)); 
+
+            
         }
     }
 }
