@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:WeatherApp.MVVM.ViewModels"
     Title="7-Day Weather"
-    Shell.NavBarIsVisible="True">
+    Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <vm:SevenDayWeatherViewModel />
     </ContentPage.BindingContext>
@@ -38,16 +38,15 @@
         <Grid
             Padding="10"
             Background="{StaticResource FrameBackgroundBrush}"
-            RowDefinitions="Auto,*,Auto"
+            RowDefinitions="auto,*,auto"
             VerticalOptions="FillAndExpand">
-            <!--  7 day ....  -->
+            <!--  7 Day Forecast Header  -->
             <StackLayout
                 Grid.Row="0"
                 HorizontalOptions="Center"
                 Spacing="5"
                 VerticalOptions="Center">
                 <Label
-                    Grid.Row="0"
                     FontAttributes="Bold"
                     FontSize="24"
                     HorizontalOptions="Center"
@@ -55,12 +54,13 @@
                     TextColor="White"
                     VerticalOptions="Center" />
             </StackLayout>
+
+            <!--  7 Day Forecast CollectionView  -->
             <CollectionView
                 Grid.Row="1"
                 Margin="10"
-                HorizontalOptions="FillAndExpand"
+                HorizontalOptions="Center"
                 ItemsSource="{Binding SevenDayWeather}">
-
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
                 </CollectionView.ItemsLayout>
@@ -70,9 +70,7 @@
                             Margin="5,0"
                             Background="{StaticResource FrameBackgroundBrush}"
                             CornerRadius="20"
-                            HasShadow="True"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center">
+                            HasShadow="True">
                             <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                 <Label Style="{StaticResource DayLabelStyle}" Text="{Binding DayOfWeek}" />
                                 <Image
@@ -84,12 +82,12 @@
                                     FontSize="18"
                                     HorizontalOptions="Center"
                                     Text="{Binding MaxTemp}"
-                                    TextColor="Red" />
+                                    TextColor="White" />
                                 <Label
                                     FontSize="18"
                                     HorizontalOptions="Center"
                                     Text="{Binding MinTemp}"
-                                    TextColor="Green" />
+                                    TextColor="White" />
                                 <Label
                                     FontSize="15"
                                     HorizontalOptions="Center"
@@ -101,70 +99,20 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-
-
-
             <StackLayout
                 Grid.Row="2"
+                Margin="20"
                 HorizontalOptions="Center"
                 Orientation="Horizontal"
-                Spacing="10">
-                <Frame
-                    Padding="10"
-                    Background="{StaticResource FrameBackgroundBrush}"
+                Spacing="15">
+                <Button
+                    BackgroundColor="#DDB130"
+                    Command="{Binding NavigateBackCommand}"
                     CornerRadius="20"
-                    HasShadow="True">
-                    <StackLayout>
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding Sunrise}"
-                            TextColor="Yellow" />
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="5:08 PM"
-                            TextColor="White" />
-                    </StackLayout>
-                </Frame>
-
-                <Frame
-                    Padding="10"
-                    Background="{StaticResource FrameBackgroundBrush}"
-                    CornerRadius="20"
-                    HasShadow="True">
-                    <StackLayout>
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding Sunset}"
-                            TextColor="Orange" />
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="6:15 PM"
-                            TextColor="White" />
-                    </StackLayout>
-                </Frame>
-
-                <Frame
-                    Padding="10"
-                    Background="{StaticResource FrameBackgroundBrush}"
-                    CornerRadius="20"
-                    HasShadow="True">
-                    <StackLayout>
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="Pressure"
-                            TextColor="Blue" />
-                        <Label
-                            FontSize="18"
-                            HorizontalOptions="Center"
-                            Text="{Binding Pressure}"
-                            TextColor="White" />
-                    </StackLayout>
-                </Frame>
+                    HeightRequest="40"
+                    Text="Back to Home"
+                    TextColor="#372A85"
+                    WidthRequest="120" />
             </StackLayout>
 
         </Grid>

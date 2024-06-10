@@ -29,13 +29,13 @@
             <Grid
                 Padding="10"
                 Background="{StaticResource FrameBackgroundBrush}"
-                RowDefinitions="auto,auto,auto,auto,*,auto,auto"
+                RowDefinitions="auto,auto,*,auto,*,auto,auto"
                 VerticalOptions="FillAndExpand">
 
                 <!--  City and Weather Info  -->
                 <StackLayout
-                    Grid.Row="0"
-                    HorizontalOptions="Center"
+                    Grid.Row="1"
+                    HorizontalOptions="Start"
                     Spacing="5"
                     VerticalOptions="Center">
                     <Label
@@ -51,7 +51,7 @@
 
                 <!--  Weather Image and Temperature  -->
                 <StackLayout
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Margin="0,20"
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
@@ -73,7 +73,7 @@
                 <!--  Weather Details  -->
 
                 <Grid
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Padding="10"
                     ColumnSpacing="50"
                     HorizontalOptions="Center"
@@ -133,20 +133,39 @@
 
                 <!--  Hourly Forecast Label  -->
                 <StackLayout
-                    Grid.Row="3"
+                    Grid.Row="4"
                     HorizontalOptions="Start"
-                    Spacing="5"
+                    Orientation="Horizontal"
+                    Spacing="45"
                     VerticalOptions="Center">
-                    <Label
+                    <Button
+                        BackgroundColor="Transparent"
+                        BorderColor="Yellow"
+                        BorderWidth="1"
+                        CornerRadius="20"
                         FontAttributes="Bold"
                         FontSize="18"
+                        HeightRequest="40"
                         Text="Hourly Forecast"
-                        TextColor="White" />
+                        TextColor="White"
+                        WidthRequest="180" />
+                    <Button
+                        BackgroundColor="Transparent"
+                        BorderColor="Yellow"
+                        BorderWidth="1"
+                        Command="{Binding NavigateToSevenDayWeatherCommand}"
+                        CornerRadius="20"
+                        FontAttributes="Bold"
+                        FontSize="Body"
+                        HeightRequest="40"
+                        Text="7-Day Weather"
+                        TextColor="White"
+                        WidthRequest="160" />
                 </StackLayout>
 
                 <!--  Hourly Forecast CollectionView  -->
                 <CollectionView
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Margin="10"
                     HorizontalOptions="FillAndExpand"
                     ItemsSource="{Binding ListDatas}">
@@ -183,7 +202,7 @@
 
                 <!--  Buttons  -->
                 <StackLayout
-                    Grid.Row="5"
+                    Grid.Row="6"
                     Margin="20"
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
@@ -205,14 +224,7 @@
                         TextColor="#372A85"
                         WidthRequest="160" />
 
-                    <Button
-                        BackgroundColor="#DDB130"
-                        Command="{Binding NavigateToSevenDayWeatherCommand}"
-                        CornerRadius="20"
-                        HeightRequest="40"
-                        Text="7-Day Weather"
-                        TextColor="#372A85"
-                        WidthRequest="160" />
+
                 </StackLayout>
 
             </Grid>

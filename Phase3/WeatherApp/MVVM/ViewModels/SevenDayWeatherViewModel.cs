@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿using System;
+using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using WeatherApp.MVVM.Models;
 
 namespace WeatherApp.MVVM.ViewModels
@@ -7,34 +9,54 @@ namespace WeatherApp.MVVM.ViewModels
     public partial class SevenDayWeatherViewModel : ObservableObject
     {
         [ObservableProperty]
-        private List<WeatherInfo> sevenDayWeather;
+        private ObservableCollection<WeatherInfo> sevenDayWeather;
+
+        [ObservableProperty]
+        private string sunriseTime;
+
+        [ObservableProperty]
+        private string sunsetTime;
+
+        [ObservableProperty]
+        private string pressure;
 
         public SevenDayWeatherViewModel()
         {
-            LoadSampleData();
+            LoadWeatherData();
+            NavigateBackCommand = new RelayCommand(NavigateBack);
         }
 
-        private void LoadSampleData()   
+        private void LoadWeatherData()
         {
-            SevenDayWeather = new List<WeatherInfo>
+            // Dummy weather data for 7 days
+            var weatherData = new ObservableCollection<WeatherInfo>
             {
-                new WeatherInfo { DayOfWeek = "Monday", WeatherIcon = "w_01d.png", MaxTemp = "25°C", MinTemp = "15°C", Cloudiness = "10% Cloudy" ,Sunrise ="5:15 AM" , Sunset="6:30 PM", Pressure ="1017 hPa"},
-    
-                new WeatherInfo { DayOfWeek = "Tuesday", WeatherIcon = "w_01n.png", MaxTemp = "22°C", MinTemp = "14°C", Cloudiness = "20% Cloudy", Sunrise = "5:15 AM", Sunset = "6:30 PM", Pressure = "1017 hPa" },
-
-                new WeatherInfo { DayOfWeek = "Wednesday", WeatherIcon = "w_02d.png", MaxTemp = "20°C", MinTemp = "13°C", Cloudiness = "60% Cloudy", Sunrise = "5:15 AM", Sunset = "6:30 PM", Pressure = "1017 hPa" },
-
-
-                new WeatherInfo { DayOfWeek = "Thursday", WeatherIcon = "w_02n.png", MaxTemp = "18°C", MinTemp = "12°C", Cloudiness = "80% Cloudy", Sunrise = "5:15 AM", Sunset = "6:30 PM", Pressure = "1017 hPa" },
-
-
-                new WeatherInfo { DayOfWeek = "Friday", WeatherIcon = "w_03d.png", MaxTemp = "24°C", MinTemp = "16°C", Cloudiness = "10% Cloudy", Sunrise = "5:15 AM", Sunset = "6:30 PM", Pressure = "1017 hPa" },
-
-
-                new WeatherInfo { DayOfWeek = "Saturday", WeatherIcon = "w_03n.png", MaxTemp = "23°C", MinTemp = "15°C", Cloudiness = "30% Cloudy", Sunrise = "5:15 AM", Sunset = "6:30 PM", Pressure = "1017 hPa" },
-
-                new WeatherInfo { DayOfWeek = "Sunday", WeatherIcon = "w_04d.png", MaxTemp = "19°C", MinTemp = "13°C", Cloudiness = "50% Cloudy", Sunrise = "5:15 AM", Sunset = "6:30 PM", Pressure = "1017 hPa" },
+                new WeatherInfo { DayOfWeek = "Monday", MaxTemp = "30°C", MinTemp = "20°C", WeatherIcon = "w_01d.png", Cloudiness = "Clear Sky", Sunrise = "5:00 AM", Sunset = "7:00 PM", Pressure = "1013" },
+                new WeatherInfo { DayOfWeek = "Tuesday", MaxTemp = "28°C", MinTemp = "18°C", WeatherIcon = "w_02d.png", Cloudiness = "Partly Cloudy", Sunrise = "5:01 AM", Sunset = "7:01 PM", Pressure = "1015" },
+                new WeatherInfo { DayOfWeek = "Wednesday", MaxTemp = "25°C", MinTemp = "17°C", WeatherIcon = "w_03d.png", Cloudiness = "Rain Showers", Sunrise = "5:02 AM", Sunset = "7:02 PM", Pressure = "1010" },
+                new WeatherInfo { DayOfWeek = "Thursday", MaxTemp = "27°C", MinTemp = "19°C", WeatherIcon = "w_04d.png", Cloudiness = "Clear Sky", Sunrise = "5:03 AM", Sunset = "7:03 PM", Pressure = "1012" },
+                new WeatherInfo { DayOfWeek = "Friday", MaxTemp = "29°C", MinTemp = "21°C", WeatherIcon = "w_05d.png", Cloudiness = "Partly Cloudy", Sunrise = "5:04 AM", Sunset = "7:04 PM", Pressure = "1011" },
+                new WeatherInfo { DayOfWeek = "Saturday", MaxTemp = "31°C", MinTemp = "22°C", WeatherIcon = "w_09d.png", Cloudiness = "Clear Sky", Sunrise = "5:05 AM", Sunset = "7:05 PM", Pressure = "1014" },
+                new WeatherInfo { DayOfWeek = "Sunday", MaxTemp = "32°C", MinTemp = "23°C", WeatherIcon = "w_10d.png", Cloudiness = "Thunderstorms", Sunrise = "5:06 AM", Sunset = "7:06 PM", Pressure = "1013" }
             };
+
+            SevenDayWeather = weatherData;
+
+            // Use the data from the first day for sunrise, sunset, and pressure
+            SunriseTime = weatherData[0].Sunrise;
+            SunsetTime = weatherData[0].Sunset;
+            Pressure = $"{weatherData[0].Pressure} hPa";
+
+          
+    }
+        // Command to navigate back to the home page
+        public IRelayCommand NavigateBackCommand { get; }
+
+        private async void NavigateBack()
+        {
+            // Logic to navigate back to the home page
+            await Shell.Current.GoToAsync("//HomePage");
         }
+
     }
 }
