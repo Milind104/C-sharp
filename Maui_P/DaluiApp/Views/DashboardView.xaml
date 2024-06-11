@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DaluiApp.Views.DashboardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="DashboardView"
+    BackgroundColor="#101216">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:ListToStringConverter x:Key="ListToStringConverter" Separator="," />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <Grid Margin="25,25,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".10*" />
+            <RowDefinition Height=".20*" />
+            <RowDefinition Height=".25*" />
+            <RowDefinition Height=".35*" />
+            <RowDefinition Height=".10*" />
+
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Margin="0,0,25,0"
+            ColumnDefinitions="*,*">
+            <VerticalStackLayout VerticalOptions="Center">
+                <Rectangle
+                    Fill="#CACDD3"
+                    HeightRequest="2"
+                    HorizontalOptions="Start"
+                    WidthRequest="25" />
+                <Rectangle
+                    Margin="0,5,0,0"
+                    Fill="#CACDD3"
+                    HeightRequest="2"
+                    HorizontalOptions="Start"
+                    WidthRequest="35" />
+
+            </VerticalStackLayout>
+            <Border
+                Grid.Column="1"
+                HeightRequest="75"
+                HorizontalOptions="End"
+                StrokeShape="RoundRectangle 80,80,80,80"
+                WidthRequest="75">
+                <Image
+                    Aspect="AspectFill"
+                    HeightRequest="90"
+                    HorizontalOptions="Center"
+                    Source="person.jpg"
+                    WidthRequest="90" />
+            </Border>
+
+        </Grid>
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="Center">
+            <Label
+                FontFamily="Nexa-Heavy"
+                FontSize="30"
+                Text=" Create Incredible Universes"
+                TextColor="White" />
+
+            <Label
+                Margin="0,10,0,0"
+                FontFamily="Nexa-Heavy"
+                FontSize="20"
+                Text="Join your friends"
+                TextColor="#ACB1BB" />
+        </VerticalStackLayout>
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Profiles}"
+            VerticalOptions="Center">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        ColumnDefinitions=".35*, .65*"
+                        HeightRequest="60"
+                        WidthRequest="160">
+                        <RoundRectangle
+                            Grid.ColumnSpan="2"
+                            CornerRadius="45"
+                            Fill="#1F262A" />
+                        <Border
+                            Grid.RowSpan="2"
+                            Margin="5,0,0,0"
+                            HeightRequest="50"
+                            HorizontalOptions="Start"
+                            StrokeShape="RoundRectangle 80,80,80,80"
+                            StrokeThickness="0"
+                            WidthRequest="50">
+                            <Image HeightRequest="50" Source="{Binding ProfileImage}" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label
+                                Margin="10,0,0,0"
+                                FontFamily="Nexa-Heavy"
+                                HorizontalTextAlignment="Start"
+                                Text="{Binding Name}"
+                                TextColor="white"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Margin="10,0,0,0"
+                                FontFamily="Nexa-Heavy"
+                                FontSize="12"
+                                Text="{Binding NoPhotos, StringFormat='{0} pictures'}"
+                                TextColor="#869CBD"
+                                VerticalOptions="Start" />
+                        </VerticalStackLayout>
+
+
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <cards:CoverFlowView
+            Grid.Row="3"
+            Margin="-15,0,15,0"
+            ItemsSource="{Binding GeneratedImages}"
+            PositionShiftValue="125">
+            <x:Arguments>
+                <proc:CoverFlowProcessor OpacityFactor="0.25" ScaleFactor="0.75" />
+            </x:Arguments>
+            <cards:CoverFlowView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundRectangle 25,25,25,25" StrokeThickness="0">
+                        <Grid RowDefinitions=".7*,.3*">
+                            <Image
+                                Grid.RowSpan="2"
+                                Aspect="AspectFill"
+                                Source="{Binding ImagePath}" />
+                            <Grid Grid.Row="1">
+                                <Rectangle
+                                    Fill="Black"
+                                    Opacity=".5"
+                                    StrokeThickness="0" />
+                                <VerticalStackLayout Margin="10,0,0,0" VerticalOptions="Center">
+                                    <Label
+                                        FontFamily="Nexa-Heavy"
+                                        FontSize="25"
+                                        Text="{Binding MainKeyword}"
+                                        TextColor="White" />
+                                    <Label
+                                        FontFamily="Nexa-Heavy"
+                                        FontSize="15"
+                                        Text="{Binding Keywords, Converter={StaticResource ListToStringConverter}}"
+                                        TextColor="White" />
+
+                                </VerticalStackLayout>
+
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </cards:CoverFlowView.ItemTemplate>
+        </cards:CoverFlowView>
+
+        <Border
+            Grid.Row="4"
+            Margin="0,15,0,0"
+            HorizontalOptions="End"
+            StrokeShape="RoundRectangle 55,0,0,0"
+            WidthRequest="250">
+            <Button
+                BackgroundColor="#E8FF8E"
+                FontFamily="Nexa-Heavy"
+                FontSize="16"
+                Text="Create new Image"
+                TextColor="#101216" />
+        </Border>
+    </Grid>
+</ContentPage>
