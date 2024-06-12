@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="DaluiApp.Views.GenerationOptionsView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="GenerationOptionsView"
+    BackgroundColor="#101216">
+
+    <Grid Margin="25,25,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".20*" />
+            <RowDefinition Height=".10*" />
+            <RowDefinition Height=".10*" />
+            <RowDefinition Height=".30*" />
+            <RowDefinition Height=".20*" />
+            <RowDefinition Height=".10*" />
+        </Grid.RowDefinitions>
+        <VerticalStackLayout VerticalOptions="Center">
+            <Label
+                FontFamily="Nexa-Heavy"
+                FontSize="30"
+                Text="Select Options"
+                TextColor="White" />
+            <Label
+                Margin="0,10,0,0"
+                FontSize="20"
+                Text="Minimum Of 6 options"
+                TextColor="#ACB1BB" />
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Options}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HeightRequest="50" WidthRequest="150">
+                        <RoundRectangle CornerRadius="35" Fill="#242529" />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding .}"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Grid.Row="2"
+            FontFamily="Nexa-Heavy"
+            FontSize="20"
+            Text="Choose a style of picture"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+        <CollectionView
+            Grid.Row="3"
+            ItemsSource="{Binding Styles}"
+            SelectionMode="Single">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Border StrokeShape="RoundRectangle 20,20,20,20" StrokeThickness="0">
+                            <Image Source="{Binding ImageUrl}" />
+                        </Border>
+                        <Label
+                            Margin="0,0,0,10"
+                            FontFamily="Nexa-Heavy"
+                            FontSize="15"
+                            HorizontalOptions="Center"
+                            Text="{Binding Name}"
+                            TextColor="White"
+                            VerticalOptions="End">
+                            <Label.Shadow>
+                                <Shadow
+                                    Brush="Black"
+                                    Opacity="1"
+                                    Radius="1"
+                                    Offset="5,5" />
+                            </Label.Shadow>
+                        </Label>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+
+        </CollectionView>
+
+        <Border
+            Grid.Row="4"
+            Margin="0,15,25,0"
+            BackgroundColor="#242529"
+            StrokeShape="RoundRectangle 20,20,20,20"
+            StrokeThickness="0">
+            <Editor
+                Margin="5"
+                BackgroundColor="#242529"
+                TextColor="White" />
+
+        </Border>
+        <Button
+            Grid.Row="5"
+            BackgroundColor="#98C0Fe"
+            CornerRadius="25"
+            HorizontalOptions="Center"
+            Text="Generate"
+            TextColor="Black"
+            VerticalOptions="Center"
+            WidthRequest="150" />
+
+
+
+    </Grid>
+
+
+
+</ContentPage>
