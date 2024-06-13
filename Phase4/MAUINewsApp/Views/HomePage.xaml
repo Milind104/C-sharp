@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MAUINewsApp.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MAUINewsApp.Models"
+    xmlns:viewmodels="clr-namespace:MAUINewsApp.ViewModels"
+    Title="Home">
+
+    <ContentPage.Resources>
+        <Style x:Key="HeaderStack" TargetType="StackLayout">
+            <Setter Property="Margin" Value="10,16,10,4" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="Padding" Value="20,0" />
+        </Style>
+        <Style x:Key="SectionHeading" TargetType="Label">
+            <Setter Property="FontFamily" Value="NotoSerifBold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        </Style>
+        <Style x:Key="ShowAll" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="End" />
+            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+            <Setter Property="VerticalOptions" Value="End" />
+        </Style>
+        <DataTemplate x:Key="ArticleTemplate" x:DataType="models:Article">
+            <StackLayout Margin="10,0,0,0" Orientation="Vertical">
+                <Frame
+                    Padding="0"
+                    BorderColor="Transparent"
+                    IsClippedToBounds="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=TappedCommand}" CommandParameter="{Binding .}" />
+                    </Frame.GestureRecognizers>
+                    <Image
+                        Aspect="AspectFill"
+                        HeightRequest="140"
+                        Source="{Binding ImageURL}"
+                        WidthRequest="260" />
+                </Frame>
+                <Label
+                    FontFamily="OpenSansSemibold"
+                    MaxLines="2"
+                    Text="{Binding Title}" />
+                <StackLayout Orientation="Horizontal" Spacing="2">
+                    <Label Text="{Binding Category}" TextColor="{StaticResource Primary}" />
+                    <Label Text="·" />
+                    <Label Text="{Binding Time}" />
+                </StackLayout>
+            </StackLayout>
+        </DataTemplate>
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Style="{StaticResource HeaderStack}">
+                <Label Style="{StaticResource SectionHeading}" Text="Popular tags" />
+                <Label Style="{StaticResource ShowAll}" Text="Show All" />
+            </StackLayout>
+
+            <!--  TODO: flow layout for tag buttons  -->
+            <StackLayout
+                Padding="10,0"
+                BindableLayout.ItemsSource="{Binding Tags}"
+                Orientation="Horizontal"
+                Spacing="4">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="10,4"
+                            BackgroundColor="#f2f2f2"
+                            BorderColor="Transparent">
+                            <Label Text="{Binding .}" />
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+
+            <StackLayout Style="{StaticResource HeaderStack}">
+                <Label Style="{StaticResource SectionHeading}" Text="Latest news" />
+                <Label Style="{StaticResource ShowAll}" Text="Show All" />
+            </StackLayout>
+
+            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                <StackLayout
+                    BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"
+                    BindableLayout.ItemsSource="{Binding LatestArticles}"
+                    Orientation="Horizontal" />
+            </ScrollView>
+
+            <StackLayout Style="{StaticResource HeaderStack}">
+                <Label Style="{StaticResource SectionHeading}" Text="Recommended for you" />
+                <Label Style="{StaticResource ShowAll}" Text="Show All" />
+            </StackLayout>
+            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                <StackLayout
+                    BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"
+                    BindableLayout.ItemsSource="{Binding RecommendedArticles}"
+                    Orientation="Horizontal" />
+            </ScrollView>
+
+            <StackLayout Style="{StaticResource HeaderStack}">
+                <Label Style="{StaticResource SectionHeading}" Text="Popular articles" />
+                <Label Style="{StaticResource ShowAll}" Text="Show All" />
+            </StackLayout>
+            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                <StackLayout
+                    BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"
+                    BindableLayout.ItemsSource="{Binding PopularArticles}"
+                    Orientation="Horizontal" />
+            </ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

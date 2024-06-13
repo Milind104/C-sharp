@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MAUINewsApp.Views.SectionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="SectionsPage">
+    <VerticalStackLayout>
+        <Label
+            HorizontalOptions="Center"
+            Text="Welcome to .NET MAUI! sections "
+            VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>
