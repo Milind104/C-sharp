@@ -5,19 +5,35 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MAUINewsApp"
     xmlns:views="clr-namespace:MAUINewsApp.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarForegroundColor="#007FFF"
+    Shell.TabBarIsVisible="True"
+    Shell.TabBarTitleColor="Blue"
+    Shell.TabBarUnselectedColor="Gray">
 
     <TabBar>
-        <Tab x:Name="HomeTab">
+        <Tab
+            x:Name="HomeTab"
+            Title="Home"
+            Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="home" />
         </Tab>
-        <Tab x:Name="SectionsTab">
+        <Tab
+            x:Name="SectionsTab"
+            Title="Sections"
+            Icon="categories.png">
             <ShellContent ContentTemplate="{DataTemplate views:SectionsPage}" Route="sections" />
         </Tab>
-        <Tab x:Name="BookmarksTab">
+        <Tab
+            x:Name="BookmarksTab"
+            Title="Bookmarks"
+            Icon="bookmarks.png">
             <ShellContent ContentTemplate="{DataTemplate views:BookmarksPage}" Route="bookmarks" />
         </Tab>
-        <Tab x:Name="ProfileTab">
+        <Tab
+            x:Name="ProfileTab"
+            Title="Profile"
+            Icon="profile.png">
             <ShellContent ContentTemplate="{DataTemplate views:ProfilePage}" Route="profile" />
         </Tab>
     </TabBar>

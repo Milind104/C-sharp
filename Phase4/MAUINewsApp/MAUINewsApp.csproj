@@ -57,6 +57,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Resources\Images\home.png\**" />
+	  <Compile Remove="Resources\Images\home.png\**" />
+	  <EmbeddedResource Remove="Resources\Images\home.png\**" />
+	  <MauiCss Remove="Resources\Images\home.png\**" />
+	  <MauiImage Remove="Resources\Images\home.png\**" />
+	  <MauiXaml Remove="Resources\Images\home.png\**" />
+	  <None Remove="Resources\Images\home.png\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -79,5 +89,7 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionMAUINewsAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
