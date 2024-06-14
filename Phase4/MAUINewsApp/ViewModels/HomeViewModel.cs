@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace MAUINewsApp.ViewModels
 {
     public class HomeViewModel
@@ -40,8 +41,8 @@ namespace MAUINewsApp.ViewModels
 
             this.LatestArticles = new List<Article>()
             {
-                new Article("Some Article Title Here. However, in a twist, this one is a bit longer.", "https://picsum.photos/seed/one/300/200", "This is the body, it's very long!", "Business", "8m ago"),
-                new Article("And another one!", "https://picsum.photos/seed/two/300/200", "This is ALSO the body, it's very long!", "Sports", "12m ago"),
+                new Article("Some Article Title Here. However, in a twist, this one is a bit longer.", "https://fastly.picsum.photos/id/704/300/200.jpg?hmac=ZYJXPEuIsrZWX1oLPN_ut7C6wOCYv4dNn8uEkPhOl3Q", "This is the body, it's very long!", "Business", "8m ago"),
+                new Article("And another one!", "https://fastly.picsum.photos/id/805/300/200.jpg?hmac=28eezqdZybSoXvf2TZhkS2MgleKvhVvuZwWCYDYNlaY", "This is ALSO the body, it's very long!", "Sports", "12m ago"),
                 new Article("Wait, There's More.", "https://picsum.photos/seed/three/300/200", "Blah blah blah. Talking talking talking.", "Science", "16m ago"),
                 new Article("Just Another", "https://picsum.photos/seed/four/300/200", "I'm tired of making up fake content.", "Politics", "23m ago")
             };

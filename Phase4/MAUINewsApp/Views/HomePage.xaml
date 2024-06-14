@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <Style x:Key="HeaderStack" TargetType="StackLayout">
-            <Setter Property="Margin" Value="10,16,10,10" />
+            <Setter Property="Margin" Value="10,16,10,14" />
             <Setter Property="Orientation" Value="Horizontal" />
             <Setter Property="Padding" Value="20,0" />
         </Style>
@@ -53,7 +53,7 @@
                     FontSize="18"
                     MaxLines="2"
                     Text="{Binding Title}" />
-                <StackLayout Orientation="Horizontal" Spacing="2">
+                <StackLayout Orientation="Horizontal" Spacing="4">
                     <Label Text="{Binding Category}" TextColor="{StaticResource Primary}" />
                     <Label
                         FontAttributes="Bold"
@@ -71,7 +71,6 @@
                 <Label Style="{StaticResource ShowAll}" Text="Show All" />
             </StackLayout>
 
-            <!--  TODO: flow layout for tag buttons  -->
             <FlexLayout
                 Margin="10,0"
                 BindableLayout.ItemsSource="{Binding Tags}"
@@ -84,11 +83,15 @@
                             BackgroundColor="#f2f2f2"
                             BorderColor="Transparent"
                             CornerRadius="4">
-                            <Label FontFamily="PoppinsSemibold" Text="{Binding .}" />
+                            <Label
+                                FontFamily="Poppins"
+                                Text="{Binding .}"
+                                VerticalOptions="Center" />
                         </Frame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </FlexLayout>
+
             <BoxView />
 
             <StackLayout Style="{StaticResource HeaderStack}">
@@ -99,7 +102,8 @@
                 <StackLayout
                     BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"
                     BindableLayout.ItemsSource="{Binding LatestArticles}"
-                    Orientation="Horizontal" />
+                    Orientation="Horizontal"
+                    Spacing="10" />
             </ScrollView>
 
             <BoxView />
@@ -112,7 +116,8 @@
                 <StackLayout
                     BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"
                     BindableLayout.ItemsSource="{Binding RecommendedArticles}"
-                    Orientation="Horizontal" />
+                    Orientation="Horizontal"
+                    Spacing="10" />
             </ScrollView>
 
             <BoxView />
@@ -125,7 +130,8 @@
                 <StackLayout
                     BindableLayout.ItemTemplate="{StaticResource ArticleTemplate}"
                     BindableLayout.ItemsSource="{Binding PopularArticles}"
-                    Orientation="Horizontal" />
+                    Orientation="Horizontal"
+                    Spacing="10" />
             </ScrollView>
         </VerticalStackLayout>
     </ScrollView>

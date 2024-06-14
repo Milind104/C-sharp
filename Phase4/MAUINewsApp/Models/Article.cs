@@ -24,8 +24,8 @@ namespace MAUINewsApp.Models
         {
             
             this.Title = title;
-            this.Subtitle = subtitle;
             this.ImageURL = imageUrl;
+            this.Subtitle = subtitle;
             this.Category = category;
             this.Time = time;
         }
