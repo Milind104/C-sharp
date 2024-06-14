@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using MAUINewsApp.Services;
+using MAUINewsApp.ViewModels;
+using MAUINewsApp.Views;
+using Microsoft.Extensions.Logging;
 
 namespace MAUINewsApp
 {
@@ -9,6 +12,8 @@ namespace MAUINewsApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .RegisterAppServices()
+            .RegisterViewModels()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -25,6 +30,24 @@ namespace MAUINewsApp
 #endif
 
             return builder.Build();
+        }
+        public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<INewsService, MockNewsService>();
+
+            return mauiAppBuilder;
+        }
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddTransient<HomeViewModel>();
+            mauiAppBuilder.Services.AddTransient<SectionsViewModel>();
+            mauiAppBuilder.Services.AddTransient<ArticleViewModel>();
+
+            mauiAppBuilder.Services.AddTransient<HomePage>();
+            mauiAppBuilder.Services.AddTransient<SectionsPage>();
+            mauiAppBuilder.Services.AddTransient<ArticlePage>();
+
+            return mauiAppBuilder;
         }
     }
 }

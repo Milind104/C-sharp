@@ -8,11 +8,11 @@ namespace MAUINewsApp.Models
 {
     public class Article
     {
-        
 
+        public string Id { get; set; }
         public string Title { get; }
 
-        public string Subtitle { get; }
+        
 
         public string ImageURL { get; }
 
@@ -20,12 +20,12 @@ namespace MAUINewsApp.Models
 
         public string Time { get; }
 
-        public Article( string title, string subtitle, string imageUrl, string category, string time)
+        public Article( string id , string title, string imageUrl, string category, string time)
         {
-            
+            this.Id = id;
             this.Title = title;
             this.ImageURL = imageUrl;
-            this.Subtitle = subtitle;
+           
             this.Category = category;
             this.Time = time;
         }

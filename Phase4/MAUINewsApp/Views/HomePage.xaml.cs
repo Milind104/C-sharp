@@ -1,12 +1,13 @@
+using MAUINewsApp.Services;
 using MAUINewsApp.ViewModels;
 
 namespace MAUINewsApp.Views;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
-	{
+	public HomePage(INewsService news)
+    {
 		InitializeComponent();
-		this.BindingContext = new HomeViewModel();
-	}
+        this.BindingContext = new HomeViewModel(news);
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using MAUINewsApp.Models;
+using MAUINewsApp.Services;
 using MAUINewsApp.Views;
 using System;
 using System.Collections.Generic;
@@ -8,26 +9,13 @@ using System.Threading.Tasks;
 
 namespace MAUINewsApp.ViewModels
 {
-    public  class SectionsViewModel
+    public class SectionsViewModel
     {
-        public SectionsViewModel()
+        public SectionsViewModel(INewsService news)
         {
-            this.Sections = new List<Category>()
-            {
-                new Category("Health",MaterialDesignIcons.Spa),
-                new Category("Politics",MaterialDesignIcons.AccountBalance),
-                new Category("Business",MaterialDesignIcons.Work),
-                new Category("Music",MaterialDesignIcons.MusicNote),
-                new Category("Marketing",MaterialDesignIcons.Store),
-                new Category("Nature",MaterialDesignIcons.LocalFlorist),
-                new Category("Arts",MaterialDesignIcons.ColorLens),
-                new Category("Travel",MaterialDesignIcons.FlightTakeoff),
-                new Category("Food",MaterialDesignIcons.Restaurant),
-                new Category("Style",MaterialDesignIcons.Style),
-
-            };
+            this.Sections = news.GetCategories();
         }
 
-        public List<Category> Sections { get; set; }
+        public ICollection<Category> Sections { get; set; }
     }
 }
