@@ -4,20 +4,45 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:MAUINewsApp.ViewModels"
+    xmlns:views="clr-namespace:MAUINewsApp.Views"
     Title="ArticlePage"
     x:DataType="viewmodels:ArticleViewModel">
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout Spacing="10">
             <Image
                 Aspect="AspectFill"
                 HeightRequest="300"
                 Source="{Binding ImageURL}" />
             <Label
-                Margin="20"
+                Margin="20,10"
                 FontFamily="NotoSerifBold"
                 FontSize="20"
                 Text="{Binding Title}" />
-            <Label Margin="20,0,20,0" Text="{Binding Body}" />
+            <StackLayout
+                Margin="20,0"
+                Orientation="Horizontal"
+                Spacing="10">
+                <Frame
+                    Padding="0"
+                    BackgroundColor="{StaticResource Gray200}"
+                    BorderColor="Transparent"
+                    CornerRadius="16"
+                    HeightRequest="32"
+                    WidthRequest="32">
+                    <Label
+                        FontFamily="Material"
+                        FontSize="28"
+                        HorizontalOptions="Center"
+                        Text="{x:Static views:MaterialDesignIcons.AccountCircle}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+                </Frame>
+                <Label
+                    Text="{Binding Time}"
+                    TextColor="{StaticResource Gray400}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <Label Margin="20,0" Text="{Binding Body}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
