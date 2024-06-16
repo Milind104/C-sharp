@@ -16,7 +16,7 @@
             <Label
                 Margin="20,10"
                 FontFamily="NotoSerifBold"
-                FontSize="20"
+                FontSize="26"
                 Text="{Binding Title}" />
             <StackLayout
                 Margin="20,0"
@@ -42,7 +42,10 @@
                     TextColor="{StaticResource Gray400}"
                     VerticalOptions="Center" />
             </StackLayout>
-            <Label Margin="20,0" Text="{Binding Body}" />
+            <Label
+                Margin="20,0"
+                FontSize="16"
+                Text="{Binding Body}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

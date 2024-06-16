@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <Style x:Key="HeaderStack" TargetType="StackLayout">
-            <Setter Property="Margin" Value="10,16,10,14" />
+            <Setter Property="Margin" Value="20,16,20,14" />
             <Setter Property="Orientation" Value="Horizontal" />
             <Setter Property="Padding" Value="20,0" />
         </Style>
@@ -31,17 +31,18 @@
         </Style>
         <DataTemplate x:Key="ArticleTemplate" x:DataType="models:Article">
             <StackLayout
-                Margin="10,0,0,0"
+                Margin="20,0,0,0"
                 HeightRequest="260"
                 Orientation="Vertical"
                 WidthRequest="300">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=TappedCommand}" CommandParameter="{Binding .}" />
+                </StackLayout.GestureRecognizers>
                 <Frame
                     Padding="0"
                     BorderColor="Transparent"
                     IsClippedToBounds="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:HomeViewModel}}, Path=TappedCommand}" CommandParameter="{Binding .}" />
-                    </Frame.GestureRecognizers>
+
                     <Image
                         Aspect="AspectFill"
                         HeightRequest="180"
@@ -49,6 +50,7 @@
                         WidthRequest="300" />
                 </Frame>
                 <Label
+                    Margin="0,4,0,0"
                     FontFamily="PoppinsSemibold"
                     FontSize="18"
                     MaxLines="2"
@@ -72,7 +74,7 @@
             </StackLayout>
 
             <FlexLayout
-                Margin="10,0"
+                Margin="20,0"
                 BindableLayout.ItemsSource="{Binding Tags}"
                 Wrap="Wrap">
                 <BindableLayout.ItemTemplate>
