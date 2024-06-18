@@ -1,14 +1,21 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using RealEstateApp.Services;
+using RealEstateApp.ViewModels;
 
 namespace RealEstateApp
 {
     public static class MauiProgram
+
     {
+        static IServiceProvider ServiceProvider { get; set; }
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -23,8 +30,23 @@ namespace RealEstateApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+            builder.Services.AddTransient<IHouseServices,HouseServices>();
+            builder.Services.AddTransient<MainViewModel>();
 
-            return builder.Build();
+            var mauiApp = builder.Build();
+
+            ServiceProvider = mauiApp.Services;
+
+            return mauiApp;
+        }
+
+
+        public static TService GetService<TService>()
+        {
+            var result = ServiceProvider.GetService<TService>();
+            if (result == null)
+                throw new Exception("service not registered");
+            return result;
         }
     }
 }
