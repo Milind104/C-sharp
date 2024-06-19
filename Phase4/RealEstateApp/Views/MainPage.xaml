@@ -4,9 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:RealEstateApp.Models"
+    xmlns:templates="clr-namespace:RealEstateApp.Views.Templates"
+    xmlns:tookkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:RealEstateApp.ViewModels"
     x:DataType="viewModels:MainViewModel"
-    BackgroundColor="#ebecee">
+    BackgroundColor="#ebecee"
+    Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
         <ResourceDictionary />
@@ -138,32 +141,18 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <CollectionView ItemsSource="{Binding Categories}">
+            <CollectionView ItemsSource="{Binding Recommendations}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
+                    <LinearItemsLayout ItemSpacing="6" Orientation="Horizontal" />
+
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Category">
-                        <Border
-                            Padding="4,4,4,4"
-                            BackgroundColor="White"
-                            HeightRequest="160"
-                            WidthRequest="160">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15" />
-                            </Border.StrokeShape>
-
-
-
-                            <Image Aspect="AspectFill" Source="{Binding Image}" />
-
-
-                        </Border>
-
-
+                    <DataTemplate>
+                        <templates:RealStatePropertyTemplate />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
 
 
 

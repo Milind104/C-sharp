@@ -26,6 +26,11 @@
                 <Setter Property="StrokeThickness" Value="0" />
             </Style>
 
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource MulishFont}" />
+            </Style>
+
+
 
 
         </ResourceDictionary>

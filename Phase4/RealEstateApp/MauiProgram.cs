@@ -30,7 +30,7 @@ namespace RealEstateApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddTransient<IHouseServices,HouseServices>();
+            builder.Services.AddTransient<IRealStatePropertyServices,RealStatePropertyServices>();
             builder.Services.AddTransient<MainViewModel>();
 
             var mauiApp = builder.Build();

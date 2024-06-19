@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.Services
 {
-    public interface IHouseServices
+    public interface IRealStatePropertyServices
     {
-        List<House> GetHouses();
+        List<RealStateProperty> GetRealStateProperties();
         List<Category> GetCategories();
     }
 }

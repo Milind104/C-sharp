@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.Models
 {
-    public  class House
+    public  class RealStateProperty
     {
         public string Title { get; set; }
         public string Description { get; set; }
