@@ -20,10 +20,32 @@
                             <RoundRectangle CornerRadius="10" />
                         </Border.StrokeShape>
                         <Image
-                            BackgroundColor="Beige"
+                            Aspect="AspectFill"
                             HeightRequest="199"
-                            Source="{Binding Category.Image}"
+                            Source="{Binding PrincipalImage}"
                             WidthRequest="240" />
+                    </Border>
+                    <Border
+                        Margin="0,0,0,8"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+                        <Grid
+                            BackgroundColor="#9b99ae"
+                            HeightRequest="40"
+                            Opacity="0.85"
+                            WidthRequest="100">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="16"
+                                HorizontalOptions="Center"
+                                Text="{Binding Price, StringFormat='{}{0:c0}'}"
+                                TextColor="White"
+                                VerticalOptions="Center" />
+                        </Grid>
                     </Border>
                 </Grid>
 
@@ -52,7 +74,6 @@
                                 <Image
                                     BackgroundColor="#f6eff3"
                                     HeightRequest="30"
-                                    Source="bed.svg"
                                     WidthRequest="30" />
                             </Border>
                             <Label
@@ -70,7 +91,6 @@
                                 <Image
                                     BackgroundColor="#f6eff3"
                                     HeightRequest="30"
-                                    Source="bathtub.png"
                                     WidthRequest="30" />
                             </Border>
                             <Label
@@ -88,7 +108,6 @@
                                 <Image
                                     BackgroundColor="#f6eff3"
                                     HeightRequest="30"
-                                    Source="expand.svg"
                                     WidthRequest="30" />
                             </Border>
                             <HorizontalStackLayout Spacing="3">

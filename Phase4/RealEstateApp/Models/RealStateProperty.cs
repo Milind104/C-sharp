@@ -10,6 +10,9 @@ namespace RealEstateApp.Models
     {
         public string Title { get; set; }
         public string Description { get; set; }
+
+        public string PrincipalImage => Images.FirstOrDefault();
+        public List<string> Images { get; set; }
         public RealtorAgent RealtorAgent { get; set; }
         public Category Category { get; set; }
         public string Address { get; set; }

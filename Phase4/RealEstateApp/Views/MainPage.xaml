@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:RealEstateApp.Models"
     xmlns:templates="clr-namespace:RealEstateApp.Views.Templates"
-    xmlns:tookkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:RealEstateApp.ViewModels"
     x:DataType="viewModels:MainViewModel"
     BackgroundColor="#ebecee"
@@ -14,20 +14,14 @@
     <ContentPage.Resources>
         <ResourceDictionary />
     </ContentPage.Resources>
-
     <ScrollView>
-        <VerticalStackLayout
-            Margin="20"
-            Padding="0,20"
-            Spacing="15">
-            <Grid Padding="0,20" ColumnDefinitions="auto,*,auto">
-
+        <VerticalStackLayout Padding="20" Spacing="30">
+            <Grid ColumnDefinitions="Auto, *, Auto">
                 <Border
-                    Padding="1"
+                    Padding="8"
                     BackgroundColor="White"
                     HeightRequest="45"
-                    Stroke="#C49B33"
-                    StrokeThickness="1"
+                    StrokeThickness="0"
                     WidthRequest="45">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="10" />
@@ -35,57 +29,57 @@
                     <Border.Shadow>
                         <Shadow Opacity="0.3" />
                     </Border.Shadow>
-
-                    <Image Source="cog.svg" />
+                    <Image Source="cog.png" />
                 </Border>
-
                 <VerticalStackLayout Grid.Column="1">
-                    <Label
-                        FontFamily="{StaticResource MulishFont}"
-                        FontSize="Medium"
-                        HorizontalOptions="Center"
-                        Text="Location" />
+                    <Label HorizontalOptions="Center" Text="Location" />
                     <HorizontalStackLayout HorizontalOptions="Center" Spacing="6">
                         <Label
                             FontAttributes="Bold"
                             FontFamily="{StaticResource MulishFont}"
-                            FontSize="15"
+                            FontSize="16"
                             HorizontalOptions="Center"
-                            Text="Pune"
+                            Text="Amposta"
                             VerticalOptions="Center" />
-                        <Image HeightRequest="15" Source="chevron_down.png" />
+                        <Image
+                            HeightRequest="15"
+                            Source="chevron_down.png"
+                            VerticalOptions="Center" />
                     </HorizontalStackLayout>
-
                 </VerticalStackLayout>
+                <Grid Grid.Column="2">
+                    <toolkit:AvatarView
+                        BackgroundColor="Transparent"
+                        BorderWidth="0"
+                        CornerRadius="10"
+                        HeightRequest="45"
+                        ImageSource="exterior5.jpg"
+                        WidthRequest="45">
+                        <toolkit:AvatarView.Shadow>
+                            <Shadow Opacity="0.3" />
+                        </toolkit:AvatarView.Shadow>
+                    </toolkit:AvatarView>
+                    <Border
+                        BackgroundColor="Red"
+                        HeightRequest="15"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        WidthRequest="15">
+                        <Border.StrokeShape>
+                            <Ellipse />
+                        </Border.StrokeShape>
+                        <Label
+                            FontSize="10"
+                            HorizontalOptions="Center"
+                            Text="6"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                    </Border>
+                </Grid>
 
-
-
-
-
-                <Border
-                    Grid.Column="2"
-                    Padding="1"
-                    BackgroundColor="White"
-                    HeightRequest="45"
-                    Stroke="#C49B33"
-                    StrokeThickness="1"
-                    WidthRequest="45">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10" />
-                    </Border.StrokeShape>
-                    <Border.Shadow>
-                        <Shadow Opacity="0.3" />
-                    </Border.Shadow>
-
-                    <Image Source="profile1.png" />
-                </Border>
             </Grid>
 
-            <Border
-                Padding="20,0"
-                BackgroundColor="White"
-                Stroke="#C49B33"
-                StrokeThickness="1">
+            <Border Padding="20,0" BackgroundColor="White">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10" />
                 </Border.StrokeShape>
@@ -99,14 +93,13 @@
             </Border>
 
 
-
             <CollectionView ItemsSource="{Binding Categories}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
-                        HorizontalItemSpacing="6"
+                        HorizontalItemSpacing="10"
                         Orientation="Horizontal"
                         Span="2"
-                        VerticalItemSpacing="6" />
+                        VerticalItemSpacing="10" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Category">
@@ -114,13 +107,13 @@
                             Padding="20,4,4,4"
                             BackgroundColor="White"
                             HeightRequest="60"
-                            Stroke="#C49B33"
-                            StrokeThickness="1">
+                            StrokeThickness="0">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="15" />
                             </Border.StrokeShape>
                             <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
                                 <Label
+                                    FontSize="15"
                                     Text="{Binding Name}"
                                     TextColor="#887e95"
                                     VerticalOptions="Center" />
@@ -135,32 +128,48 @@
                                 </Border>
                             </Grid>
                         </Border>
-
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <CollectionView ItemsSource="{Binding Recommendations}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="6" Orientation="Horizontal" />
+            <VerticalStackLayout Spacing="6">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Recommendations" />
+                <CollectionView ItemsSource="{Binding Recommendations}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="8" Orientation="Horizontal" />
 
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <templates:RealStatePropertyTemplate />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:RealStatePropertyTemplate />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
 
+            <VerticalStackLayout Spacing="6">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="New listings" />
+                <CollectionView ItemsSource="{Binding Recommendations}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="8" Orientation="Vertical" />
 
-
-
-
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <templates:NewListingTemplate />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
 
 
         </VerticalStackLayout>
-
     </ScrollView>
 
 </ContentPage>
