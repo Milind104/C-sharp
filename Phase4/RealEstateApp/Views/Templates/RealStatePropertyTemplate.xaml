@@ -72,8 +72,8 @@
                                     <Ellipse />
                                 </Border.StrokeShape>
                                 <Image
-                                    BackgroundColor="#f6eff3"
                                     HeightRequest="30"
+                                    Source="bed.svg"
                                     WidthRequest="30" />
                             </Border>
                             <Label
@@ -89,8 +89,8 @@
                                     <Ellipse />
                                 </Border.StrokeShape>
                                 <Image
-                                    BackgroundColor="#f6eff3"
                                     HeightRequest="30"
+                                    Source="bathtub.png"
                                     WidthRequest="30" />
                             </Border>
                             <Label
@@ -106,8 +106,8 @@
                                     <Ellipse />
                                 </Border.StrokeShape>
                                 <Image
-                                    BackgroundColor="#f6eff3"
                                     HeightRequest="30"
+                                    Source="expand.png"
                                     WidthRequest="30" />
                             </Border>
                             <HorizontalStackLayout Spacing="3">

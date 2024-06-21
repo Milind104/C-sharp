@@ -8,15 +8,15 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModels="clr-namespace:RealEstateApp.ViewModels"
     x:DataType="viewModels:MainViewModel"
-    BackgroundColor="#ebecee"
+    BackgroundColor="AliceBlue"
     Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
         <ResourceDictionary />
     </ContentPage.Resources>
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="30">
-            <Grid ColumnDefinitions="Auto, *, Auto">
+        <VerticalStackLayout Padding="0,20" Spacing="30">
+            <Grid Padding="20,0" ColumnDefinitions="Auto, *, Auto">
                 <Border
                     Padding="8"
                     BackgroundColor="White"
@@ -39,7 +39,7 @@
                             FontFamily="{StaticResource MulishFont}"
                             FontSize="16"
                             HorizontalOptions="Center"
-                            Text="Amposta"
+                            Text="Dhrampur"
                             VerticalOptions="Center" />
                         <Image
                             HeightRequest="15"
@@ -78,61 +78,63 @@
                 </Grid>
 
             </Grid>
+            <Grid Padding="20,0">
+                <Border Padding="20,0" BackgroundColor="White">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10" />
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Entry FontFamily="{StaticResource MulishFont}" Placeholder="Search by category or place" />
+                        <Image
+                            Grid.Column="1"
+                            HeightRequest="20"
+                            Source="search.png" />
+                    </Grid>
+                </Border>
+            </Grid>
 
-            <Border Padding="20,0" BackgroundColor="White">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10" />
-                </Border.StrokeShape>
-                <Grid ColumnDefinitions="*, Auto">
-                    <Entry FontFamily="{StaticResource MulishFont}" Placeholder="Search by category or place" />
-                    <Image
-                        Grid.Column="1"
-                        HeightRequest="20"
-                        Source="search.png" />
-                </Grid>
-            </Border>
+            <Grid Padding="20,0,0,0">
+                <CollectionView ItemsSource="{Binding Categories}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            HorizontalItemSpacing="10"
+                            Orientation="Horizontal"
+                            Span="2"
+                            VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Category">
+                            <Border
+                                Padding="20,4,4,4"
+                                BackgroundColor="White"
+                                HeightRequest="60"
+                                StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15" />
+                                </Border.StrokeShape>
+                                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                    <Label
+                                        FontSize="15"
+                                        Text="{Binding Name}"
+                                        TextColor="#887e95"
+                                        VerticalOptions="Center" />
+                                    <Border Grid.Column="1">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            Aspect="AspectFill"
+                                            Source="{Binding Image}"
+                                            WidthRequest="50" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
 
-
-            <CollectionView ItemsSource="{Binding Categories}">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        HorizontalItemSpacing="10"
-                        Orientation="Horizontal"
-                        Span="2"
-                        VerticalItemSpacing="10" />
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Category">
-                        <Border
-                            Padding="20,4,4,4"
-                            BackgroundColor="White"
-                            HeightRequest="60"
-                            StrokeThickness="0">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15" />
-                            </Border.StrokeShape>
-                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
-                                <Label
-                                    FontSize="15"
-                                    Text="{Binding Name}"
-                                    TextColor="#887e95"
-                                    VerticalOptions="Center" />
-                                <Border Grid.Column="1">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="10" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Aspect="AspectFill"
-                                        Source="{Binding Image}"
-                                        WidthRequest="50" />
-                                </Border>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <VerticalStackLayout Spacing="6">
+            <VerticalStackLayout Padding="20,0,0,0" Spacing="6">
                 <Label
                     FontAttributes="Bold"
                     FontSize="18"
@@ -150,7 +152,7 @@
                 </CollectionView>
             </VerticalStackLayout>
 
-            <VerticalStackLayout Spacing="6">
+            <VerticalStackLayout Padding="20,0" Spacing="6">
                 <Label
                     FontAttributes="Bold"
                     FontSize="18"
