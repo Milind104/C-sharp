@@ -164,7 +164,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <templates:NewListingTemplate />
+                            <templates:RecommendationsTemplate />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
