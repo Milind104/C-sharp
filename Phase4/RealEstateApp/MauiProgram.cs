@@ -33,6 +33,8 @@ namespace RealEstateApp
             builder.Services.AddTransient<IRealStatePropertyServices,RealStatePropertyServices>();
             builder.Services.AddTransient<MainViewModel>();
 
+            builder.Services.AddTransient<RealStatePropertyDetailViewModel>();
+
             var mauiApp = builder.Build();
 
             ServiceProvider = mauiApp.Services;

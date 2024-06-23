@@ -139,14 +139,20 @@
                     FontAttributes="Bold"
                     FontSize="18"
                     Text="Recommendations" />
-                <CollectionView ItemsSource="{Binding Recommendations}">
+                <CollectionView
+                    x:Name="RecommendationCollectionView"
+                    ItemsSource="{Binding Recommendations}"
+                    SelectionChanged="RecommendationCollectionView_OnSelectionChanged"
+                    SelectionChangedCommand="{Binding NavigateToDetailCommand}"
+                    SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference RecommendationCollectionView}}"
+                    SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout ItemSpacing="8" Orientation="Horizontal" />
 
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <templates:RealStatePropertyTemplate />
+                            <templates:RecommendationsTemplate />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -164,7 +170,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <templates:RecommendationsTemplate />
+                            <templates:NewListingTemplate />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

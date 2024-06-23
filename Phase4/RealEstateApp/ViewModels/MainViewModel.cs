@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using RealEstateApp.Models;
 using RealEstateApp.Services;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateApp.ViewModels
 {
-    public partial class MainViewModel : ObservableObject
+    public partial class MainViewModel : BaseViewModel
     {
         private readonly IRealStatePropertyServices _realStatePropertyServices;
         [ObservableProperty] private ObservableCollection<Category> _categories;
@@ -26,6 +27,15 @@ namespace RealEstateApp.ViewModels
         {
             Categories = new ObservableCollection<Category>(_realStatePropertyServices.GetCategories());
             Recommendations = new ObservableCollection<RealStateProperty>(_realStatePropertyServices.GetRealStateProperties());
+        }
+        [RelayCommand]
+        private async Task NavigateToDetail(RealStateProperty property)
+        {
+            var navigationParameter = new Dictionary<string, object>
+            {
+                { "RealStateProperty", property }
+            };
+            await Shell.Current.GoToAsync($"RealStatePropertyDetailPage", navigationParameter);
         }
     }
 }
