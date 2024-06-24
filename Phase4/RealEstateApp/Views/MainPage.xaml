@@ -9,7 +9,8 @@
     xmlns:viewModels="clr-namespace:RealEstateApp.ViewModels"
     x:DataType="viewModels:MainViewModel"
     BackgroundColor="AliceBlue"
-    Shell.NavBarIsVisible="False">
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="Animated">
 
     <ContentPage.Resources>
         <ResourceDictionary />
