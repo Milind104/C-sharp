@@ -14,7 +14,7 @@ namespace RealEstateApp.ViewModels
 
         public RealStatePropertyDetailViewModel()
         {
-            var a = 0;
+            
         }
 
 
