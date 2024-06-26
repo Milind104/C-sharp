@@ -117,7 +117,7 @@
                                 <Image
                                     Aspect="AspectFill"
                                     HeightRequest="70"
-                                    Source="{Binding RealStateProperty.RealtorAgent.Image}"
+                                    Source="{Binding RealStateProperty.Agent.Image}"
                                     WidthRequest="70" />
                             </Border>
                             <VerticalStackLayout
@@ -127,7 +127,7 @@
                                 <Label
                                     FontAttributes="Bold"
                                     FontSize="16"
-                                    Text="{Binding RealStateProperty.RealtorAgent.Name}" />
+                                    Text="{Binding RealStateProperty.Agent.Name}" />
                                 <Label Text="View Agent Profile" />
                             </VerticalStackLayout>
                             <Image
@@ -242,7 +242,6 @@
                         </HorizontalStackLayout>
                         <Button
                             Grid.Column="1"
-                            BackgroundColor="#e97e71"
                             HeightRequest="40"
                             Text="Ask a question">
                             <Button.Background>

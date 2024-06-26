@@ -21,6 +21,7 @@
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="#24293a" />
             </Style>
+            <Color x:Key="AccentColor">#c24847</Color>
 
             <Style TargetType="Border">
                 <Setter Property="StrokeThickness" Value="0" />

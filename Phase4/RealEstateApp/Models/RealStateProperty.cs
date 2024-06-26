@@ -14,7 +14,7 @@ namespace RealEstateApp.Models
 
         public string PrincipalImage => Images.FirstOrDefault();
         public List<string> Images { get; set; }
-        public RealtorAgent RealtorAgent { get; set; }
+        public Agent Agent { get; set; }
         public Category Category { get; set; }
         public string Address { get; set; }
         public int Rooms { get; set; }
@@ -27,7 +27,7 @@ namespace RealEstateApp.Models
         public int BikeScore { get; set; }
     }
 
-    public class RealtorAgent
+    public class Agent
     {
         public string Name { get; set; }
         public string Image { get; set; }

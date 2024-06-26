@@ -12,9 +12,9 @@ namespace RealEstateApp.Views
             Routing.RegisterRoute(nameof(RealStatePropertyDetailPage), typeof(RealStatePropertyDetailPage));
             BindingContext = MauiProgram.GetService<MainViewModel>();
         }
-        private void RecommendationCollectionView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void CollectionView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.RecommendationCollectionView.SelectedItem = null;
+            if (sender is CollectionView collectionView) collectionView.SelectedItem = null;
         }
 
 
