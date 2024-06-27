@@ -54,7 +54,7 @@
                         BorderWidth="0"
                         CornerRadius="10"
                         HeightRequest="45"
-                        ImageSource="exterior5.jpg"
+                        ImageSource="realtor2.jpg"
                         WidthRequest="45">
                         <toolkit:AvatarView.Shadow>
                             <Shadow Opacity="0.3" />
