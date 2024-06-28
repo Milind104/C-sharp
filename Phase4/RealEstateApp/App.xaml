@@ -11,6 +11,9 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Color x:Key="AccentColor">#c24847</Color>
+            <Color x:Key="TextColor">#24293a</Color>
+
             <x:String x:Key="MulishFont">Mulish</x:String>
             <x:String x:Key="MulishItalicFont">MulishItalic</x:String>
             <x:String x:Key="FAbrands400">FAbrands400</x:String>
@@ -19,18 +22,20 @@
 
 
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="#24293a" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource MulishFont}" />
             </Style>
-            <Color x:Key="AccentColor">#c24847</Color>
+
 
             <Style TargetType="Border">
                 <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
 
-
-
-
-
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontFamily" Value="{StaticResource MulishFont}" />
+            </Style>
 
         </ResourceDictionary>
     </Application.Resources>

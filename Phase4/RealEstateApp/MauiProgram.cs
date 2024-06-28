@@ -3,13 +3,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RealEstateApp.Services;
 using RealEstateApp.ViewModels;
+using RealEstateApp.ViewModels.Interfaces;
+using RealEstateApp.Views;
 
 namespace RealEstateApp
 {
     public static class MauiProgram
 
     {
-        static IServiceProvider ServiceProvider { get; set; }
+       
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -30,25 +32,22 @@ namespace RealEstateApp
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.Services.AddTransient<IRealStatePropertyServices,RealStatePropertyServices>();
+                    builder.Services.AddTransient<IRealStatePropertyServices,RealStatePropertyServices>();
+            builder.Services.AddTransient<AppShell>();
+            builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MainViewModel>();
 
             builder.Services.AddTransient<RealStatePropertyDetailViewModel>();
+            builder.Services.AddTransient<AgentProfilePage>();
 
-            var mauiApp = builder.Build();
+            builder.Services.AddTransient<IMainViewModel, MainViewModel>();
+            builder.Services.AddTransient<IRealStatePropertyDetailViewModel, RealStatePropertyDetailViewModel>();
+            builder.Services.AddTransient<IAgentProfileViewModel, AgentProfileViewModel>();
 
-            ServiceProvider = mauiApp.Services;
-
-            return mauiApp;
+            return builder.Build(); 
         }
 
 
-        public static TService GetService<TService>()
-        {
-            var result = ServiceProvider.GetService<TService>();
-            if (result == null)
-                throw new Exception("service not registered");
-            return result;
-        }
+        
     }
 }

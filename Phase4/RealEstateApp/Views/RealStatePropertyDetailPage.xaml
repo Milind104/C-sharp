@@ -44,7 +44,7 @@
                             IndicatorView="IndicatorView"
                             ItemsSource="{Binding RealStateProperty.Images}">
                             <CarouselView.ItemTemplate>
-                                <DataTemplate>
+                                <DataTemplate x:DataType="x:String">
                                     <Image
                                         Aspect="AspectFill"
                                         HorizontalOptions="Fill"

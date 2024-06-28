@@ -1,9 +1,22 @@
+using RealEstateApp.ViewModels.Interfaces;
+
 namespace RealEstateApp.Views;
 
 public partial class AgentProfilePage : ContentPage
 {
-	public AgentProfilePage()
-	{
-		InitializeComponent();
-	}
+    public AgentProfilePage(IAgentProfileViewModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
+
+    private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("..");
+    }
+
+    private void CollectionView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (sender is CollectionView collectionView) collectionView.SelectedItem = null;
+    }
 }
