@@ -1,19 +1,30 @@
 using RealEstateApp.ViewModels;
 using RealEstateApp.ViewModels.Interfaces;
 
-namespace RealEstateApp.Views;
 
-public partial class RealStatePropertyDetailPage : ContentPage
+namespace RealEstateApp.Views
 {
-    public RealStatePropertyDetailPage(IRealStatePropertyDetailViewModel viewModel)
+    public partial class RealStatePropertyDetailPage : ContentPage
     {
-        InitializeComponent();
-        Routing.RegisterRoute(nameof(AgentProfilePage), typeof(AgentProfilePage));
-        BindingContext = viewModel;
-    }
+        public RealStatePropertyDetailPage(IRealStatePropertyDetailViewModel viewModel)
+        {
+            InitializeComponent();
+            Routing.RegisterRoute(nameof(AgentProfilePage), typeof(AgentProfilePage));
+            BindingContext = viewModel;
+        }
 
-    private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync("..");
+        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or display a message to the user
+                Console.WriteLine($"Navigation error: {ex.Message}");
+                await DisplayAlert("Error", "Unable to navigate back. Please try again.", "OK");
+            }
+        }
     }
 }

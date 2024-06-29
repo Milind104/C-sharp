@@ -30,8 +30,6 @@
         </Style>
     </ContentPage.Resources>
     <ScrollView IsEnabled="True">
-
-
         <Grid Padding="0,0,0,20">
             <VerticalStackLayout>
                 <Grid Padding="10,10,10,0" RowDefinitions="Auto">
@@ -91,7 +89,7 @@
                     HorizontalOptions="Center"
                     IndicatorColor="#c4c4c4"
                     IndicatorsShape="Circle"
-                    SelectedIndicatorColor="#2d335b"
+                    SelectedIndicatorColor="{StaticResource AccentColor}"
                     VerticalOptions="End">
                     <IndicatorView.IndicatorTemplate>
                         <DataTemplate>
@@ -106,6 +104,9 @@
 
                 <VerticalStackLayout Padding="25,0" Spacing="15">
                     <Border Padding="4">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToAgentProfileCommand}" CommandParameter="{Binding RealStateProperty.Agent}" />
+                        </Border.GestureRecognizers>
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15" />
                         </Border.StrokeShape>
@@ -116,9 +117,9 @@
                                 </Border.StrokeShape>
                                 <Image
                                     Aspect="AspectFill"
-                                    HeightRequest="70"
+                                    HeightRequest="80"
                                     Source="{Binding RealStateProperty.Agent.Image}"
-                                    WidthRequest="70" />
+                                    WidthRequest="80" />
                             </Border>
                             <VerticalStackLayout
                                 Grid.Column="1"
@@ -136,7 +137,8 @@
                                 HeightRequest="20"
                                 HorizontalOptions="End"
                                 Source="chevron_forward.png"
-                                VerticalOptions="Center" />
+                                VerticalOptions="Center"
+                                WidthRequest="20" />
                         </Grid>
 
                     </Border>
@@ -234,9 +236,13 @@
                     </Border>
                     <Grid ColumnDefinitions="*, Auto">
                         <HorizontalStackLayout Spacing="8">
-                            <Image HeightRequest="20" Source="home_outline.png" />
+                            <Image
+                                HeightRequest="20"
+                                Source="home_outline.png"
+                                WidthRequest="20" />
                             <Label
                                 Text="Request a House Tour"
+                                TextColor="Purple"
                                 TextDecorations="Underline"
                                 VerticalTextAlignment="Center" />
                         </HorizontalStackLayout>
@@ -245,7 +251,6 @@
                             HeightRequest="40"
                             Text="Ask a question">
                             <Button.Background>
-                                <!--  StartPoint defaults to (0,0)  -->
                                 <LinearGradientBrush EndPoint="1,0">
                                     <GradientStop Offset="0.1" Color="#ff5e5d" />
                                     <GradientStop Offset="1.0" Color="#bf4746" />

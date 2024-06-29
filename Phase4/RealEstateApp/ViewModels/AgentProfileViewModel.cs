@@ -18,9 +18,9 @@ namespace RealEstateApp.ViewModels
         [ObservableProperty] private Agent _agentProfile;
         [ObservableProperty] private ObservableCollection<RealStateProperty> _agentListings;
 
-        public AgentProfileViewModel(IRealStatePropertyServices realEstatePropertyServices)
+        public AgentProfileViewModel(IRealStatePropertyServices realStatePropertyServices)
         {
-            _realStatePropertyServices = realEstatePropertyServices;
+            _realStatePropertyServices = realStatePropertyServices;
 
         }
         public void ApplyQueryAttributes(IDictionary<string, object> query)

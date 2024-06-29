@@ -17,7 +17,7 @@ namespace RealEstateApp.Services
             var agent2 = new Agent() { Id = 2, Name = "Valentina Crossfusta", Image = "Realtor2.jpg", Description = realtorDescription };
             var categories = GetCategories();
 
-            var realEstateProperty = new List<RealStateProperty>()
+            var realStateProperty = new List<RealStateProperty>()
             {
                 new()
                 {
@@ -131,7 +131,7 @@ namespace RealEstateApp.Services
             };
 
 
-            return realEstateProperty;
+            return realStateProperty;
         }
 
         public List<RealStateProperty> GetAgentProperties(int agentId)
