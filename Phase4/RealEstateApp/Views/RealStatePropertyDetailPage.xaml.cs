@@ -6,9 +6,13 @@ namespace RealEstateApp.Views
 {
     public partial class RealStatePropertyDetailPage : ContentPage
     {
-        public RealStatePropertyDetailPage(IRealStatePropertyDetailViewModel viewModel)
+
+        public RealStatePropertyDetailPage()
         {
             InitializeComponent();
+        }
+        public RealStatePropertyDetailPage(IRealStatePropertyDetailViewModel viewModel) : this()
+        {
             Routing.RegisterRoute(nameof(AgentProfilePage), typeof(AgentProfilePage));
             BindingContext = viewModel;
         }
